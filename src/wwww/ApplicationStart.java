@@ -24,9 +24,10 @@ public class ApplicationStart {
         MenuListener menuListener = new MenuListener();
         MenuScreen menuScreen = new MenuScreen();
         GameScreen gameScreen = new GameScreen();
+        GameScreen2 gameScreen2 = new GameScreen2();
         GameListener gameListener = new GameListener(gameScreen);
         CardGame cardGame = new CardGame(gameScreen);
-        GameManager gameManager = new GameManager(cardGame, mainWindow, menuListener, gameListener,menuScreen, new AboutScreen(),gameScreen);
+        GameManager gameManager = new GameManager(cardGame, mainWindow, menuListener, gameListener,menuScreen, new AboutScreen(),gameScreen,gameScreen2);
         mainWindow.setVisible(true);
         gameManager.run();
     }
