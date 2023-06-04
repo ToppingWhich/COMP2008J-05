@@ -22,7 +22,6 @@ public class MenuScreen extends JPanel implements ActionListener {
         showTextMid("Monopoly Deal Card Game",g,100);
         //g.drawString("Monopoly Deal Card Game",getWidth()/2,getHeight()/3);
     }
-    //1111
 
     MenuScreen() {
         setLayout(null);
