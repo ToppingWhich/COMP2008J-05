@@ -44,7 +44,7 @@ public class AboutScreen extends JPanel implements ActionListener {
         // 在界面中心绘制文字
         graphics.drawString(text, x, y);
     }
-
+//上传侧手
     JButton addButton(MenuListener menuListener, String text, int width, int height, int x, int y, int size){
         JButton button1 = new JButton(text);
         button1.setBounds(x, y, width, height);
