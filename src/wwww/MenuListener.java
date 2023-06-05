@@ -7,6 +7,7 @@ public class MenuListener implements ActionListener {
     public static boolean exit;
     public static boolean menu;
     public static boolean newGame;
+    public static boolean newGame2;
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -16,6 +17,8 @@ public class MenuListener implements ActionListener {
             exit =true;
         }else if (e.getSource() == MenuScreen.button[2]){
             newGame = true;
+        }else if (e.getSource() == MenuScreen.button[3]){
+            newGame2 = true;
         }else if (e.getSource() == AboutScreen.button[1] ) {
             menu = true;
         }
