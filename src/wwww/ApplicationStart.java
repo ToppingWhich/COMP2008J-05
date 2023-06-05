@@ -29,5 +29,6 @@ public class ApplicationStart {
         GameManager gameManager = new GameManager(cardGame, mainWindow, menuListener, gameListener,menuScreen, new AboutScreen(),gameScreen);
         mainWindow.setVisible(true);
         gameManager.run();
+        //fafafafa
     }
 }
