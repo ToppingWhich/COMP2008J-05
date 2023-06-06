@@ -15,9 +15,20 @@ import java.util.Collections;
 
 public class GameScreen extends JPanel implements ActionListener {
 
+//    public static ArrayList<ColorEnum> player1PropertySet1Color;
+//    public static ArrayList<ColorEnum> player1PropertySet2Color;
+//    public static ArrayList<ColorEnum> player1PropertySet3Color;
+//
+//    public static ArrayList<ColorEnum> player2PropertySet1Color;
+//    public static ArrayList<ColorEnum> player2PropertySet2Color;
+//    public static ArrayList<ColorEnum> player2PropertySet3Color;
+
+    public static int player1PublishedCardNumPerTurn = 0;
+    public static int player2PublishedCardNumPerTurn = 0;
+
     public static int playerturn = 0;
-    public static int player1Money=0;
-    public static int player2Money=0;
+    public static int player1Money = 0;
+    public static int player2Money = 0;
 
     public static JLabel label;
     static ArrayList<Card> cardBox = new ArrayList();
@@ -62,13 +73,6 @@ public class GameScreen extends JPanel implements ActionListener {
         add(button[3]);
         add(button[4]);
 
-//        button[19] = addButton(gameListener,"全部放置1",80,30,1100,750,10);
-//        button[20] = addButton(gameListener,"全部放置2",80,30,1200,750,10);
-//        button[21] = addButton(gameListener,"全部放置3",80,30,1300,750,10);
-//
-//        add(button[19]);
-//        add(button[20]);
-//        add(button[21]);
 
         button[11] = addButton(gameListener,"放置1",80,30,100,10,10);
         button[12] = addButton(gameListener,"放置2",80,30,200,10,10);
@@ -119,6 +123,14 @@ public class GameScreen extends JPanel implements ActionListener {
 
         button[18] = addButton(gameListener,"拿来主义",80,30,1300,300,10);
         add(button[18]);
+
+        //玩家一丢弃牌
+        button[19] = addButton(gameListener,"弃牌",80,30,1300,400,10);
+        add(button[19]);
+
+        //玩家2存钱进入银行
+        button[20] = addButton(gameListener,"弃牌",80,30,1300,300,10);
+        add(button[20]);
 
 
         label = new JLabel();
@@ -414,6 +426,13 @@ public class GameScreen extends JPanel implements ActionListener {
             }
             for (int i = 0; i < player2PropertySet3.size(); i++) {
                 moveCard(g, player2PropertySet3.get(i), player2PropertySet3.get(i).getLocation(), new Point(210, 10+i*50));
+            }
+        }
+    }
+    public static  void reLayCard(Graphics g,ArrayList<Card> cardSet){
+        if(playerturn==1) {
+            for (int i = 0; i < cardSet.size(); i++) {
+                moveCard(g, cardSet.get(i), cardSet.get(i).getLocation(), new Point(10 + i * 100, 600));
             }
         }
     }

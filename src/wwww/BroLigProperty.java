@@ -13,6 +13,7 @@ import java.awt.event.MouseEvent;
  */
 public class BroLigProperty extends Property{
     int value;
+
     String color = "brownandlightblue";
     public  static String cardType ="Property";
 

@@ -2,6 +2,7 @@ package wwww;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 /**
  * @Author liwenyan
@@ -13,11 +14,12 @@ import java.awt.event.MouseEvent;
  */
 public class BlueProperty extends Property{
     int value;
-    String color = "blue";
+    public static ArrayList<ColorEnum> colorArray;
     public  static String cardType ="Property";
 
     GameScreen gameScreen;
     public BlueProperty(GameScreen gameScreen, String name, boolean up) {
+        this.colorArray.add(ColorEnum.BLUE);
         this.gameScreen = gameScreen;
         this.name = name;
         this.up = up;
