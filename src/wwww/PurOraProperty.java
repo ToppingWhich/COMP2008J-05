@@ -2,6 +2,7 @@ package wwww;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 /**
  * @Author liwenyan
@@ -13,11 +14,14 @@ import java.awt.event.MouseEvent;
  */
 public class PurOraProperty extends Property{
     int value;
-    String color = "purplrandorange";
+    public static ArrayList<ColorEnum> colorArray;
     public  static String cardType ="Property";
 
     GameScreen gameScreen;
     public PurOraProperty(GameScreen gameScreen, String name, boolean up) {
+        this.colorArray = new ArrayList<ColorEnum>();
+        this.colorArray.add(ColorEnum.PURPLE);
+        this.colorArray.add(ColorEnum.ORANGE);
         this.gameScreen = gameScreen;
         this.name = name;
         this.up = up;

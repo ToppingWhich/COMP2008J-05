@@ -2,6 +2,7 @@ package wwww;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 /**
  * @Author liwenyan
@@ -13,11 +14,22 @@ import java.awt.event.MouseEvent;
  */
 public class MultifyWildProperty extends Property{
     int value;
-    String color = "all";
+    public static ArrayList<ColorEnum> colorArray;
     public  static String cardType ="Property";
 
     GameScreen gameScreen;
     public MultifyWildProperty(GameScreen gameScreen, String name, boolean up) {
+        this.colorArray = new ArrayList<ColorEnum>();
+        this.colorArray.add(ColorEnum.LIGHTBLUE);
+        this.colorArray.add(ColorEnum.RAILROAD);
+        this.colorArray.add(ColorEnum.UTILITY);
+        this.colorArray.add(ColorEnum.BLUE);
+        this.colorArray.add(ColorEnum.GREEN);
+        this.colorArray.add(ColorEnum.PURPLE);
+        this.colorArray.add(ColorEnum.RED);
+        this.colorArray.add(ColorEnum.YELLOW);
+        this.colorArray.add(ColorEnum.ORANGE);
+        this.colorArray.add(ColorEnum.BROWN);
         this.gameScreen = gameScreen;
         this.name = name;
         this.up = up;

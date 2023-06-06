@@ -129,31 +129,35 @@ public class CardGame extends Thread{
             ForceDeal.exchangeCard2=null;
             this.interrupt();
         } else if (GameListener.isPlayer1LayoutPropertyTo1) {
-//            GameListener.isPlayer1LayoutPropertyTo1 = false;
-//            if(GameScreen.player1PropertySet1Color==null) {
-//                Property selectedCard = (Property) GameScreen.player1PublishedCard.get(0);
-//                GameScreen.LayoutProperty(g, 1, selectedCard);
-//                for (ColorEnum colorEnum : selectedCard.colorArray) {
-//                    GameScreen.player1PropertySet1Color.add(colorEnum);
-//                }
-//                gameScreen.button[2].setVisible(false);
-//                gameScreen.button[3].setVisible(false);
-//                gameScreen.button[4].setVisible(false);
-//                GameScreen.player1PublishedCard.remove(0);
-//            }else{
-//                Property selectedCard = (Property) GameScreen.player1PublishedCard.get(0);
-//                for (ColorEnum colorEnum1 : selectedCard.colorArray) {
-//                    for (ColorEnum colorEnum2 : GameScreen.player1PropertySet1Color) {
-//                        if(colorEnum1 == colorEnum2){
-//                            GameScreen.LayoutProperty(g, 1, selectedCard);
-//                        }else {
-//                            GameScreen.updateText("no");
-//                        }
-//
-//                    }
-//                }
-//            }
-//            this.interrupt();
+            GameListener.isPlayer1LayoutPropertyTo1 = false;
+            System.out.println("shuliang:"+GameScreen.player1PropertySet1Color.size());
+            if(GameScreen.player1PropertySet1Color.size()==0) {
+                Property selectedCard = (Property) GameScreen.player1PublishedCard.get(0);
+                GameScreen.LayoutProperty(g, 1, selectedCard);
+                GameScreen.player1PropertySet1Color.addAll(Property.colorArray);
+                gameScreen.button[2].setVisible(false);
+                gameScreen.button[3].setVisible(false);
+                gameScreen.button[4].setVisible(false);
+                GameScreen.player1PublishedCard.remove(0);
+                this.interrupt();
+            }else{
+                System.out.println("yansebutong");
+                Property selectedCard = (Property) GameScreen.player1PublishedCard.get(0);
+                for (ColorEnum colorEnum1 : selectedCard.colorArray) {
+                    for (ColorEnum colorEnum2 : GameScreen.player1PropertySet1Color) {
+                        if(colorEnum1 == colorEnum2){
+                            GameScreen.LayoutProperty(g, 1, selectedCard);
+                            GameScreen.player1PublishedCard.remove(0);
+                            this.interrupt();
+                        }else {
+                            GameScreen.updateText("no");
+                            GameScreen.player1PublishedCard.remove(0);
+                            this.interrupt();
+                        }
+
+                    }
+                }
+            }
         } else if (GameListener.isPlayer1LayoutPropertyTo2) {
             GameListener.isPlayer1LayoutPropertyTo2 = false;
             Card selectedCard = GameScreen.player1PublishedCard.get(0);

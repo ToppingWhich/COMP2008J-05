@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @Version 1.0
  */
 public class Property extends Card{
-    public static ArrayList<ColorEnum> colorArray;
+    public static ArrayList<ColorEnum> colorArray =new ArrayList<ColorEnum>();
     int value;
     public  static String cardType ="Property";
 }

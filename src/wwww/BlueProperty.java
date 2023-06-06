@@ -19,6 +19,7 @@ public class BlueProperty extends Property{
 
     GameScreen gameScreen;
     public BlueProperty(GameScreen gameScreen, String name, boolean up) {
+        this.colorArray = new ArrayList<ColorEnum>();
         this.colorArray.add(ColorEnum.BLUE);
         this.gameScreen = gameScreen;
         this.name = name;

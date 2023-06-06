@@ -15,13 +15,13 @@ import java.util.Collections;
 
 public class GameScreen extends JPanel implements ActionListener {
 
-//    public static ArrayList<ColorEnum> player1PropertySet1Color;
-//    public static ArrayList<ColorEnum> player1PropertySet2Color;
-//    public static ArrayList<ColorEnum> player1PropertySet3Color;
-//
-//    public static ArrayList<ColorEnum> player2PropertySet1Color;
-//    public static ArrayList<ColorEnum> player2PropertySet2Color;
-//    public static ArrayList<ColorEnum> player2PropertySet3Color;
+    public static ArrayList<ColorEnum> player1PropertySet1Color = new ArrayList<ColorEnum>();
+    public static ArrayList<ColorEnum> player1PropertySet2Color;
+    public static ArrayList<ColorEnum> player1PropertySet3Color;
+
+    public static ArrayList<ColorEnum> player2PropertySet1Color;
+    public static ArrayList<ColorEnum> player2PropertySet2Color;
+    public static ArrayList<ColorEnum> player2PropertySet3Color;
 
     public static int player1PublishedCardNumPerTurn = 0;
     public static int player2PublishedCardNumPerTurn = 0;
