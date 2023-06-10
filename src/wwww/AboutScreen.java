@@ -28,7 +28,7 @@ public class AboutScreen extends JPanel implements ActionListener {
             throw new RuntimeException(e);
         }
         showTextMid("Game Rules",g,100);
-    }
+    }//ooooooo
 
     void showTextMid(String text,Graphics graphics,int size){
         Font font = new Font("Arial", Font.BOLD, size);
