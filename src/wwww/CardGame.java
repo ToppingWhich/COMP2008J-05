@@ -71,6 +71,7 @@ public class CardGame extends Thread{
             this.interrupt();
         }else if (GameListener.isPlayer1LayoutCashToBank) {
             GameListener.isPlayer1LayoutCashToBank = false;
+            //Cash selectedCard = GameScreen.player1PublishedCard.get(0);
             Card selectedCard = GameScreen.player1PublishedCard.get(0);
             selectedCard.roteted=true;
             selectedCard.rotate();

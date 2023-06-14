@@ -7,6 +7,7 @@ package wwww;
  * @ClassName: a
  * @Description: TODO
  * @Version 1.0
+ *
  */
 
 import javax.swing.*;
@@ -14,9 +15,9 @@ import javax.swing.*;
 public class ApplicationStart {
     public static void main(String[] args) {
         JFrame mainWindow = new JFrame();
-        //mainWindow.setSize(CardGame.SCREEN_WIDTH, CardGame.SCREEN_HEIGHT);
-        mainWindow.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        mainWindow.setUndecorated(true);
+        mainWindow.setSize(CardGame.SCREEN_WIDTH, CardGame.SCREEN_HEIGHT);
+        //mainWindow.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //mainWindow.setUndecorated(true);
         mainWindow.setResizable(false);
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainWindow.setTitle("Game");

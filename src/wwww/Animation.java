@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * @ClassName: Animation
  * @Description: TODO
  * @Version 1.0
+ *
  */
 public class Animation {
     public static CardType jugdeType(ArrayList<Card> list) {
