@@ -60,6 +60,12 @@ public class DealBreaker extends Card{
     public void rotate() {
         super.rotate();
     }
+//    public void rotate1() {
+//        super.rotate1();
+//    }
+//    public void rotate2() {
+//        super.rotate2();
+//    }
 
     @Override
     public void turnRear() {

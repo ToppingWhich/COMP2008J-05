@@ -136,12 +136,13 @@ public class GameListener implements ActionListener {
             cardGame.start();
         }else if (e.getSource() == GameScreen.button[15]) {
             isPlayer1LayoutCashToBank = true;
-            GameScreen.updateText("玩家1把现金放入了银行");
+            //GameScreen.updateText("玩家1把现金放入了银行"+"The sum of the cash:"+Cash.sum1);
             CardGame cardGame = new CardGame(gameScreen);
             cardGame.start();
+            GameScreen.updateText("玩家1把现金放入了银行"+"The sum of the cash:"+Cash.sum1+"+the amount of the last card");
         }else if (e.getSource() == GameScreen.button[16]) {
             isPlayer2LayoutCashToBank = true;
-            GameScreen.updateText("玩家2把现金放入了银行");
+            GameScreen.updateText("玩家2把现金放入了银行"+"The sum of the cash:"+Cash.sum2+"+the amount of the last card");
             CardGame cardGame = new CardGame(gameScreen);
             cardGame.start();
         }

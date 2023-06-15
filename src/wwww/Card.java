@@ -51,7 +51,6 @@ public class Card extends JLabel implements MouseListener {
 
     }
     void used(GameScreen gameScreen){
-
     }
 
     public Card(GameScreen gameScreen, String name, boolean canClick, boolean clicked) {
@@ -68,6 +67,12 @@ public class Card extends JLabel implements MouseListener {
     public void rotate(){
 
     }
+//    public void rotate1(){
+//
+//    }
+//    public void rotate2(){
+//
+//    }
 
     //显示背面
     public void turnRear() {
