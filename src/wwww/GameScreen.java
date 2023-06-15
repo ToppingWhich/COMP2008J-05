@@ -16,12 +16,12 @@ import java.util.Collections;
 public class GameScreen extends JPanel implements ActionListener {
 
     public static ArrayList<ColorEnum> player1PropertySet1Color = new ArrayList<ColorEnum>();
-    public static ArrayList<ColorEnum> player1PropertySet2Color;
-    public static ArrayList<ColorEnum> player1PropertySet3Color;
+    public static ArrayList<ColorEnum> player1PropertySet2Color= new ArrayList<ColorEnum>();
+    public static ArrayList<ColorEnum> player1PropertySet3Color= new ArrayList<ColorEnum>();
 
-    public static ArrayList<ColorEnum> player2PropertySet1Color;
-    public static ArrayList<ColorEnum> player2PropertySet2Color;
-    public static ArrayList<ColorEnum> player2PropertySet3Color;
+    public static ArrayList<ColorEnum> player2PropertySet1Color= new ArrayList<ColorEnum>();
+    public static ArrayList<ColorEnum> player2PropertySet2Color= new ArrayList<ColorEnum>();
+    public static ArrayList<ColorEnum> player2PropertySet3Color= new ArrayList<ColorEnum>();
 
     public static int player1PublishedCardNumPerTurn = 0;
     public static int player2PublishedCardNumPerTurn = 0;
@@ -135,9 +135,10 @@ public class GameScreen extends JPanel implements ActionListener {
 
         label = new JLabel();
         label.setSize(700, 50);
-        label.setLocation(900, 500);
-        label.setFont(new Font("仿宋", Font.BOLD, 15));
+        label.setLocation(300, 420);
+        label.setFont(new Font("仿宋", Font.BOLD, 22));
         label.setText("Please click \"Start Dealing\"");
+        label.setForeground(new Color(0x005708));
         add(label);
 
         player1PropertySet.add(player1PropertySet1);
@@ -172,7 +173,7 @@ public class GameScreen extends JPanel implements ActionListener {
 
         //Prepare profile picture
         Head player1 = createHead(this, "Player1", 10, 550);
-        Head player2 = createHead(this, "Player2", 1400, 300);
+        Head player2 = createHead(this, "Player2", 1400, 250);
         add(player1);
         add(player2);
 
