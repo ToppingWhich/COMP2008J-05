@@ -128,7 +128,7 @@ public class GameScreen extends JPanel implements ActionListener {
         button[19] = addButton(gameListener,"弃牌",80,30,1300,400,10);
         add(button[19]);
 
-        //玩家2存钱进入银行
+        //玩家2弃牌
         button[20] = addButton(gameListener,"弃牌",80,30,1300,300,10);
         add(button[20]);
 

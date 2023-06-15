@@ -73,20 +73,26 @@ public class GameListener implements ActionListener {
             GameScreen.updateText("玩家1弃牌了");
             CardGame cardGame = new CardGame(gameScreen);
             cardGame.start();
+        }else if (e.getSource()==GameScreen.button[20]) {
+            isPlayer2AbandonCard = true;
+            GameScreen.updateText("玩家2弃牌了");
+            CardGame cardGame = new CardGame(gameScreen);
+            cardGame.start();
         }else if(e.getSource()==GameScreen.button[8]) {
             isBeginPlayer2Turn = true;
             GameScreen.updateText("玩家2的回合，获得两张新的手牌");
             CardGame cardGame = new CardGame(gameScreen);
             cardGame.start();
         }else if (e.getSource()==GameScreen.button[10]) {
-            //if(GameScreen.player1CardSet.size()<6) {
-            isEndPlayer2Turn = true;
-            GameScreen.updateText("玩家2的回合结束了");
-            CardGame cardGame = new CardGame(gameScreen);
-            cardGame.start();
-            //}else{
-            //GameScreen.updateText("你的手牌太多无法结束");
-            //}
+            if(GameScreen.player2CardSet.size()<8) {
+                isEndPlayer2Turn = true;
+                GameScreen.updateText("玩家2的回合结束了");
+                CardGame cardGame = new CardGame(gameScreen);
+                cardGame.start();
+            }else{
+                GameScreen.updateText("你的手牌太多无法结束");
+                GameScreen.button[20].setVisible(true);
+            }
         } else if (e.getSource() == GameScreen.button[6]) {
             isPlayer1PublishedCard = true;
             GameScreen.updateText("玩家1出牌了");
