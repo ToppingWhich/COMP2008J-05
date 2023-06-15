@@ -14,31 +14,31 @@ import java.awt.event.MouseListener;
  * @Version 1.0
  */
 public class Head extends JLabel implements MouseListener {
-    //游戏主界面
+    //Main game interface
     GameScreen gameScreen;
 
-    //牌的名字
+    //The name of the card
     String name;
 
 
-    //牌显示正面还是反面
+    //Does the card say heads or tails
     boolean up;
-    //是否可点击
+    //If it can be clicked
     boolean canClick = true;
 
-    //当前状态，是否已经被点击
+    //Current status, whether it has been clicked
     boolean clicked = false;
 
     public Head(GameScreen m, String name) {
         this.gameScreen = m;
         this.name = name;
-        //判断当前的牌是显示正面还是背面
+        //Determine whether the current card shows front or back
         this.turnFront();
-        //设置牌的宽高大小
+        //Set the width, height and size of the card
         this.setSize(50, 50);
-        //把牌显示出来
+        //Display the card
         this.setVisible(true);
-        //给每一张牌添加鼠标监听
+        //Add mouse monitor to each card
         this.addMouseListener(this);
     }
 
@@ -52,9 +52,9 @@ public class Head extends JLabel implements MouseListener {
         this.canClick = canClick;
         this.clicked = clicked;
     }
-    //显示正面
+    //Display front
     public void turnFront() {
-        this.setIcon(new ImageIcon("src/images/dizhu.png"));
+        this.setIcon(new ImageIcon("src/images/熊.jpg"));
         this.up = true;
     }
 

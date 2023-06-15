@@ -13,7 +13,7 @@ import java.awt.event.MouseEvent;
  * @Version 1.0
  */
 public class ForceDeal extends Card{
-    //面额
+    //denomination
     int value = 3;
     public  static String cardType ="ActionCard";
 
@@ -134,7 +134,7 @@ public class ForceDeal extends Card{
     Graphics g;
     public static Card exchangeCard1;
     public static Card exchangeCard2;
-    //运行方法
+    //Operation method
     void used(GameScreen gameScreen){
         if(GameScreen.playerturn == 1){
             if (GameScreen.player1PropertySet.get(0).size()!=0||GameScreen.player1PropertySet.get(1).size()!=0||GameScreen.player1PropertySet.get(2).size()!=0){
@@ -142,7 +142,7 @@ public class ForceDeal extends Card{
                     GameScreen.moveCard(g,this,this.getLocation(),new Point(100,350));
                     this.setClicked(false);
                     GameScreen.player1PublishedCard.remove(this);
-                    GameScreen.updateText("点击己方和对方将要交换的地产");
+                    GameScreen.updateText("Click on the property that you and the other party want to exchange");
                     for (int i = 0; i < GameScreen.player1PropertySet.size(); i++) {
                         if(i==1){
                             for (int j = 0; j < GameScreen.player1PropertySet1.size(); j++) {
@@ -192,10 +192,10 @@ public class ForceDeal extends Card{
                     GameScreen.moveCard(g,exchangeCard1,exchangeCard1.getLocation(),exchangeCard2.getLocation());
                     GameScreen.moveCard(g,exchangeCard2,exchangeCard2.getLocation(),exchangeCard1Location);
                 }else {
-                    GameScreen.updateText("对方没有地产可以交换");
+                    GameScreen.updateText("The other side has no property to exchange");
                 }
             }else {
-                GameScreen.updateText("你没有地产可以交换");
+                GameScreen.updateText("You have no property to exchange");
             }
             for (int i = 0; i < GameScreen.player1PublishedCard.size(); i++) {
                 GameScreen.player1PublishedCard.remove(i);

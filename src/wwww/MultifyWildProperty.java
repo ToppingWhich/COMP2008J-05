@@ -33,17 +33,17 @@ public class MultifyWildProperty extends Property{
         this.gameScreen = gameScreen;
         this.name = name;
         this.up = up;
-        //判断当前的牌是显示正面还是背面
+        //Determine whether the current card shows front or back
         if (this.up){
             this.turnFront();
         }else {
             this.turnRear();
         }
-        //设置牌的宽高大小
+        //Set the width, height and size of the card
         this.setSize(140, 240);
-        //把牌显示出来
+        //Display the card
         this.setVisible(true);
-        //给每一张牌添加鼠标监听
+        //Add mouse monitor to each card
         this.addMouseListener(this);
     }
     public MultifyWildProperty(GameScreen gameScreen, String name, boolean canClick, boolean clicked) {

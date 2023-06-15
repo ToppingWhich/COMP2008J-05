@@ -13,7 +13,7 @@ import java.awt.event.MouseEvent;
  * @Version 1.0
  */
 public class PassGo extends Card{
-    //面额
+    //denomination
     int value = 3;
     public  static String cardType ="ActionCard";
 
@@ -131,7 +131,7 @@ public class PassGo extends Card{
     }
 
     Graphics g;
-    //运行方法
+    //Operation method
     void used(GameScreen gameScreen){
         for (int i = 0; i < GameScreen.player1PublishedCard.size(); i++) {
             GameScreen.player1PublishedCard.remove(i);

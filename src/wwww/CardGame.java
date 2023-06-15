@@ -25,6 +25,7 @@ public class CardGame extends Thread{
     }
 
     @Override
+    //Run the game
     public void run() {
         if (GameListener.isInitCard) {
             GameScreen.button[1].setVisible(false);
@@ -87,6 +88,9 @@ public class CardGame extends Thread{
         }else if (GameListener.isPlayer2LayoutCashToBank) {
             GameListener.isPlayer2LayoutCashToBank = false;
             Card selectedCard = GameScreen.player2PublishedCard.get(0);
+            Cash cash = (Cash)  selectedCard;
+            GameScreen.player2Money+=cash.getValue();
+            GameScreen.updateText("玩家2把现金放入了银行"+"The sum of the cash:"+GameScreen.player2Money);
             selectedCard.roteted=true;
             selectedCard.rotate();
             GameScreen.LayoutCash(g,selectedCard);
@@ -167,7 +171,6 @@ public class CardGame extends Thread{
             }
         } else if (GameListener.isPlayer1LayoutPropertyTo2) {
             GameListener.isPlayer1LayoutPropertyTo2 = false;
-            System.out.println("shuliang:"+GameScreen.player1PropertySet2Color.size());
             if(GameScreen.player1PropertySet2Color.size()==0) {
                 Property selectedCard = (Property) GameScreen.player1PublishedCard.get(0);
                 GameScreen.LayoutProperty(g, 2, selectedCard);
