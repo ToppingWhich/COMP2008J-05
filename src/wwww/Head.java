@@ -54,7 +54,7 @@ public class Head extends JLabel implements MouseListener {
     }
     //显示正面
     public void turnFront() {
-        this.setIcon(new ImageIcon("src/images/dizhu.png"));
+        this.setIcon(new ImageIcon("src/images/熊.jpg"));
         this.up = true;
     }
 
