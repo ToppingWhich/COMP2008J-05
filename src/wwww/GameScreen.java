@@ -135,7 +135,7 @@ public class GameScreen extends JPanel implements ActionListener {
 
         label = new JLabel();
         label.setSize(700, 50);
-        label.setLocation(900, 500);
+        label.setLocation(300, 400);
         label.setFont(new Font("仿宋", Font.BOLD, 15));
         label.setText("请点击“开始发牌“");
         add(label);
