@@ -71,6 +71,7 @@ public class CardGame extends Thread{
             this.interrupt();
         }else if (GameListener.isPlayer1LayoutCashToBank) {
             GameListener.isPlayer1LayoutCashToBank = false;
+            //Cash selectedCard = GameScreen.player1PublishedCard.get(0);
             Card selectedCard = GameScreen.player1PublishedCard.get(0);
             selectedCard.roteted=true;
             selectedCard.rotate();
@@ -89,15 +90,31 @@ public class CardGame extends Thread{
             this.interrupt();
         }else if (GameListener.isPlayer1PublishedCard) {
             GameListener.isPlayer1PublishedCard =false;
-            for (int i = 0; i <GameScreen.player1CardSet.size(); i++) {
-                if(GameScreen.player1CardSet.get(i).isClicked()){
-                    Card selectedCard = GameScreen.player1CardSet.get(i);
-                    GameScreen.player1PublishedCard.add(selectedCard);
-                    if(selectedCard.cardType != "Property"){
-                        GameScreen.moveCard(g,selectedCard,selectedCard.getLocation(),new Point(100,350));
+            if(GameScreen.player1PublishedCardNumPerTurn<3) {
+                GameScreen.player1PublishedCardNumPerTurn+=1;
+                for (int i = 0; i < GameScreen.player1CardSet.size(); i++) {
+                    if (GameScreen.player1CardSet.get(i).isClicked()) {
+                        Card selectedCard = GameScreen.player1CardSet.get(i);
+                        GameScreen.player1PublishedCard.add(selectedCard);
+                        if (selectedCard.cardType != "Property") {
+                            GameScreen.moveCard(g, selectedCard, selectedCard.getLocation(), new Point(100, 350));
+                        }
+                        GameScreen.player1CardSet.remove(selectedCard);
+                        selectedCard.used(gameScreen);
                     }
-                    GameScreen.player1CardSet.remove(selectedCard);
-                    selectedCard.used(gameScreen);
+                }
+            }else if(GameScreen.player1PublishedCardNumPerTurn == 3){
+                GameScreen.button[6].setVisible(false);
+                for (int i = 0; i < GameScreen.player1CardSet.size(); i++) {
+                    if (GameScreen.player1CardSet.get(i).isClicked()) {
+                        Card selectedCard = GameScreen.player1CardSet.get(i);
+                        GameScreen.player1PublishedCard.add(selectedCard);
+                        if (selectedCard.cardType != "Property") {
+                            GameScreen.moveCard(g, selectedCard, selectedCard.getLocation(), new Point(100, 350));
+                        }
+                        GameScreen.player1CardSet.remove(selectedCard);
+                        selectedCard.used(gameScreen);
+                    }
                 }
             }
             this.interrupt();
@@ -114,13 +131,34 @@ public class CardGame extends Thread{
             this.interrupt();
         } else if (GameListener.isPlayer1LayoutPropertyTo1) {
             GameListener.isPlayer1LayoutPropertyTo1 = false;
-            Card selectedCard = GameScreen.player1PublishedCard.get(0);
-            GameScreen.LayoutProperty(g,1,selectedCard);
-            gameScreen.button[2].setVisible(false);
-            gameScreen.button[3].setVisible(false);
-            gameScreen.button[4].setVisible(false);
-            GameScreen.player1PublishedCard.remove(0);
-            this.interrupt();
+            System.out.println("shuliang:"+GameScreen.player1PropertySet1Color.size());
+            if(GameScreen.player1PropertySet1Color.size()==0) {
+                Property selectedCard = (Property) GameScreen.player1PublishedCard.get(0);
+                GameScreen.LayoutProperty(g, 1, selectedCard);
+                GameScreen.player1PropertySet1Color.addAll(Property.colorArray);
+                gameScreen.button[2].setVisible(false);
+                gameScreen.button[3].setVisible(false);
+                gameScreen.button[4].setVisible(false);
+                GameScreen.player1PublishedCard.remove(0);
+                this.interrupt();
+            }else{
+                System.out.println("yansebutong");
+                Property selectedCard = (Property) GameScreen.player1PublishedCard.get(0);
+                for (ColorEnum colorEnum1 : selectedCard.colorArray) {
+                    for (ColorEnum colorEnum2 : GameScreen.player1PropertySet1Color) {
+                        if(colorEnum1 == colorEnum2){
+                            GameScreen.LayoutProperty(g, 1, selectedCard);
+                            GameScreen.player1PublishedCard.remove(0);
+                            this.interrupt();
+                        }else {
+                            GameScreen.updateText("no");
+                            GameScreen.player1PublishedCard.remove(0);
+                            this.interrupt();
+                        }
+
+                    }
+                }
+            }
         } else if (GameListener.isPlayer1LayoutPropertyTo2) {
             GameListener.isPlayer1LayoutPropertyTo2 = false;
             Card selectedCard = GameScreen.player1PublishedCard.get(0);
@@ -140,14 +178,32 @@ public class CardGame extends Thread{
             GameScreen.player1PublishedCard.remove(0);
             this.interrupt();
         }else if (GameListener.isPlayer2PublishedCard) {
-            GameListener.isPlayer2PublishedCard =false;
-            for (int i = 0; i <GameScreen.player2CardSet.size(); i++) {
-                if(GameScreen.player2CardSet.get(i).isClicked()){
-                    Card selectedCard = GameScreen.player2CardSet.get(i);
-                    GameScreen.player2PublishedCard.add(selectedCard);
-                    selectedCard.used(gameScreen);
+
+            GameListener.isPlayer2PublishedCard = false;
+            if (GameScreen.player2PublishedCardNumPerTurn < 3) {
+                GameScreen.player2PublishedCardNumPerTurn += 1;
+                for (int i = 0; i < GameScreen.player2CardSet.size(); i++) {
+                    if (GameScreen.player2CardSet.get(i).isClicked()) {
+                        Card selectedCard = GameScreen.player2CardSet.get(i);
+                        GameScreen.player2PublishedCard.add(selectedCard);
+                        selectedCard.used(gameScreen);
+                    }
+                }
+            }else if(GameScreen.player2PublishedCardNumPerTurn == 3){
+                GameScreen.button[9].setVisible(false);
+                for (int i = 0; i < GameScreen.player2CardSet.size(); i++) {
+                    if (GameScreen.player2CardSet.get(i).isClicked()) {
+                        Card selectedCard = GameScreen.player2CardSet.get(i);
+                        GameScreen.player2PublishedCard.add(selectedCard);
+                        if (selectedCard.cardType != "Property") {
+                            GameScreen.moveCard(g, selectedCard, selectedCard.getLocation(), new Point(100, 350));
+                        }
+                        GameScreen.player2CardSet.remove(selectedCard);
+                        selectedCard.used(gameScreen);
+                    }
                 }
             }
+
             this.interrupt();
         }else if (GameListener.isPlayer2LayoutPropertyTo1) {
             GameListener.isPlayer2LayoutPropertyTo1 = false;
@@ -176,8 +232,20 @@ public class CardGame extends Thread{
             gameScreen.button[13].setVisible(false);
             GameScreen.player2PublishedCard.remove(0);
             this.interrupt();
+        }else if (GameListener.isPlayer1AbandonCard) {
+            GameListener.isPlayer1AbandonCard = false;
+            for (int i = 0; i < GameScreen.player1CardSet.size(); i++) {
+                if (GameScreen.player1CardSet.get(i).isClicked()) {
+                    Card selectedCard = GameScreen.player1CardSet.get(i);
+                    GameScreen.moveCard(g, selectedCard, selectedCard.getLocation(), new Point(100, 350));
+                    GameScreen.player1CardSet.remove(selectedCard);
+                    GameScreen.reLayCard(g,GameScreen.player1CardSet);
+                }
+            }
+            this.interrupt();
         }else if (GameListener.isBeginPlayer1Turn) {
             GameListener.isBeginPlayer1Turn=false;
+            GameScreen.player1PublishedCardNumPerTurn=1;
             GameScreen.button[5].setVisible(false);
             GameScreen.playerturn = 1;
             GameScreen.getTwoNewCard(g);
@@ -205,6 +273,7 @@ public class CardGame extends Thread{
             this.interrupt();
         }else if (GameListener.isEndPlayer1Turn) {
             GameListener.isEndPlayer1Turn = false;
+
             GameScreen.button[5].setVisible(false);
             GameScreen.button[8].setVisible(true);
             for (int i = 0; i < GameScreen.player1CardSet.size(); i++) {

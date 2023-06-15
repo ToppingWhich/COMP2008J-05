@@ -14,6 +14,8 @@ import java.awt.event.ActionListener;
  */
 public class GameListener implements ActionListener {
     public static boolean isInitCard;
+    public static boolean isPlayer1AbandonCard;
+    public static boolean isPlayer2AbandonCard;
     public static boolean isBeginPlayer1Turn;
     public static boolean isEndPlayer1Turn;
     public static boolean isBeginPlayer2Turn;
@@ -57,17 +59,23 @@ public class GameListener implements ActionListener {
             CardGame cardGame = new CardGame(gameScreen);
             cardGame.start();
         } else if (e.getSource()==GameScreen.button[7]) {
-            //if(GameScreen.player1CardSet.size()<6) {
+            if(GameScreen.player1CardSet.size()<8) {
                 isEndPlayer1Turn = true;
                 GameScreen.updateText("玩家1的回合结束了");
                 CardGame cardGame = new CardGame(gameScreen);
                 cardGame.start();
-            //}else{
-                //GameScreen.updateText("你的手牌太多无法结束");
-            //}
+            }else{
+                GameScreen.updateText("你的手牌太多无法结束");
+                GameScreen.button[19].setVisible(true);
+            }
+        }else if (e.getSource()==GameScreen.button[19]) {
+            isPlayer1AbandonCard = true;
+            GameScreen.updateText("玩家1弃牌了");
+            CardGame cardGame = new CardGame(gameScreen);
+            cardGame.start();
         }else if(e.getSource()==GameScreen.button[8]) {
             isBeginPlayer2Turn = true;
-            GameScreen.updateText("玩家2的回合，\n获得两张新的手牌");
+            GameScreen.updateText("玩家2的回合，获得两张新的手牌");
             CardGame cardGame = new CardGame(gameScreen);
             cardGame.start();
         }else if (e.getSource()==GameScreen.button[10]) {
@@ -128,12 +136,13 @@ public class GameListener implements ActionListener {
             cardGame.start();
         }else if (e.getSource() == GameScreen.button[15]) {
             isPlayer1LayoutCashToBank = true;
-            GameScreen.updateText("玩家1把现金放入了银行");
+            //GameScreen.updateText("玩家1把现金放入了银行"+"The sum of the cash:"+Cash.sum1);
             CardGame cardGame = new CardGame(gameScreen);
             cardGame.start();
+            GameScreen.updateText("玩家1把现金放入了银行"+"The sum of the cash:"+Cash.sum1+"+the amount of the last card");
         }else if (e.getSource() == GameScreen.button[16]) {
             isPlayer2LayoutCashToBank = true;
-            GameScreen.updateText("玩家2把现金放入了银行");
+            GameScreen.updateText("玩家2把现金放入了银行"+"The sum of the cash:"+Cash.sum2+"+the amount of the last card");
             CardGame cardGame = new CardGame(gameScreen);
             cardGame.start();
         }

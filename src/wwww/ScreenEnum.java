@@ -9,5 +9,5 @@ package wwww;
  * @Version 1.0
  */
 public enum ScreenEnum {
-    SCORE_SCREEN, GAME_SCREEN, ABOUT_SCREEN, MAIN_MENU_SCREEN
+    GAME_SCREEN, ABOUT_SCREEN, MAIN_MENU_SCREEN, GAME_SCREEN2
 }

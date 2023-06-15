@@ -15,9 +15,20 @@ import java.util.Collections;
 
 public class GameScreen extends JPanel implements ActionListener {
 
+    public static ArrayList<ColorEnum> player1PropertySet1Color = new ArrayList<ColorEnum>();
+    public static ArrayList<ColorEnum> player1PropertySet2Color;
+    public static ArrayList<ColorEnum> player1PropertySet3Color;
+
+    public static ArrayList<ColorEnum> player2PropertySet1Color;
+    public static ArrayList<ColorEnum> player2PropertySet2Color;
+    public static ArrayList<ColorEnum> player2PropertySet3Color;
+
+    public static int player1PublishedCardNumPerTurn = 0;
+    public static int player2PublishedCardNumPerTurn = 0;
+
     public static int playerturn = 0;
-    public static int player1Money=0;
-    public static int player2Money=0;
+    public static int player1Money = 0;
+    public static int player2Money = 0;
 
     public static JLabel label;
     static ArrayList<Card> cardBox = new ArrayList();
@@ -62,13 +73,6 @@ public class GameScreen extends JPanel implements ActionListener {
         add(button[3]);
         add(button[4]);
 
-//        button[19] = addButton(gameListener,"全部放置1",80,30,1100,750,10);
-//        button[20] = addButton(gameListener,"全部放置2",80,30,1200,750,10);
-//        button[21] = addButton(gameListener,"全部放置3",80,30,1300,750,10);
-//
-//        add(button[19]);
-//        add(button[20]);
-//        add(button[21]);
 
         button[11] = addButton(gameListener,"放置1",80,30,100,10,10);
         button[12] = addButton(gameListener,"放置2",80,30,200,10,10);
@@ -120,11 +124,19 @@ public class GameScreen extends JPanel implements ActionListener {
         button[18] = addButton(gameListener,"拿来主义",80,30,1300,300,10);
         add(button[18]);
 
+        //玩家一丢弃牌
+        button[19] = addButton(gameListener,"弃牌",80,30,1300,400,10);
+        add(button[19]);
+
+        //玩家2存钱进入银行
+        button[20] = addButton(gameListener,"弃牌",80,30,1300,300,10);
+        add(button[20]);
+
 
         label = new JLabel();
-        label.setSize(300, 30);
-        label.setLocation(1000, 500);
-        label.setFont(new Font("仿宋", Font.BOLD, 10));
+        label.setSize(700, 50);
+        label.setLocation(900, 500);
+        label.setFont(new Font("仿宋", Font.BOLD, 15));
         label.setText("请点击“开始发牌“");
         add(label);
 
@@ -384,13 +396,13 @@ public class GameScreen extends JPanel implements ActionListener {
                 moveCard(g, player1CardSet.get(i), player1CardSet.get(i).getLocation(), new Point(10 + i * 100, 600));
             }
             for (int i = 0; i < player1PropertySet1.size(); i++) {
-                moveCard(g, player1PropertySet1.get(i), player1PropertySet1.get(i).getLocation(), new Point(1100, 450+i*50));
+                moveCard(g, player1PropertySet1.get(i), player1PropertySet1.get(i).getLocation(), new Point(1090, 450+i*45));
             }
             for (int i = 0; i < player1PropertySet2.size(); i++) {
-                moveCard(g, player1PropertySet2.get(i), player1PropertySet2.get(i).getLocation(), new Point(1200, 450+i*50));
+                moveCard(g, player1PropertySet2.get(i), player1PropertySet2.get(i).getLocation(), new Point(1220, 450+i*45));
             }
             for (int i = 0; i < player1PropertySet3.size(); i++) {
-                moveCard(g, player1PropertySet3.get(i), player1PropertySet3.get(i).getLocation(), new Point(1300, 450+i*50));
+                moveCard(g, player1PropertySet3.get(i), player1PropertySet3.get(i).getLocation(), new Point(1350, 450+i*45));
             }
         } else if (playerturn == 2) {
             if(propertySetIndex == 1) {
@@ -407,13 +419,20 @@ public class GameScreen extends JPanel implements ActionListener {
                 moveCard(g, player2CardSet.get(i), player2CardSet.get(i).getLocation(), new Point(1300 - i * 100, 10));
             }
             for (int i = 0; i < player2PropertySet1.size(); i++) {
-                moveCard(g, player2PropertySet1.get(i), player2PropertySet1.get(i).getLocation(), new Point(10, 10+i*50));
+                moveCard(g, player2PropertySet1.get(i), player2PropertySet1.get(i).getLocation(), new Point(10, 10+i*45));
             }
             for (int i = 0; i < player2PropertySet2.size(); i++) {
-                moveCard(g, player2PropertySet2.get(i), player2PropertySet2.get(i).getLocation(), new Point(110, 10+i*50));
+                moveCard(g, player2PropertySet2.get(i), player2PropertySet2.get(i).getLocation(), new Point(140, 10+i*45));
             }
             for (int i = 0; i < player2PropertySet3.size(); i++) {
-                moveCard(g, player2PropertySet3.get(i), player2PropertySet3.get(i).getLocation(), new Point(210, 10+i*50));
+                moveCard(g, player2PropertySet3.get(i), player2PropertySet3.get(i).getLocation(), new Point(270, 10+i*45));
+            }
+        }
+    }
+    public static  void reLayCard(Graphics g,ArrayList<Card> cardSet){
+        if(playerturn==1) {
+            for (int i = 0; i < cardSet.size(); i++) {
+                moveCard(g, cardSet.get(i), cardSet.get(i).getLocation(), new Point(10 + i * 100, 600));
             }
         }
     }
@@ -427,8 +446,22 @@ public class GameScreen extends JPanel implements ActionListener {
                 moveCard(g, player1CardSet.get(i), player1CardSet.get(i).getLocation(), new Point(10 + i * 100, 600));
             }
             for (int i = 0; i < player1bank.size(); i++) {
-                moveCard(g, player1bank.get(i), player1bank.get(i).getLocation(), new Point(1100, 350+i*30));
+                moveCard(g, player1bank.get(i), player1bank.get(i).getLocation(), new Point(880, 350+i*50));
             }
+            if(Cash.value==1){
+                Cash.sum1+=1;
+            }else if(Cash.value==2){
+                Cash.sum1+=2;
+            }else if(Cash.value==3){
+                Cash.sum1+=3;
+            }else if(Cash.value==4){
+                Cash.sum1+=4;
+            }else if(Cash.value==5){
+                Cash.sum1+=5;
+            }else if(Cash.value==10){
+                Cash.sum1+=10;
+            }
+            System.out.println(Cash.getSum1());
         } else if (playerturn == 2) {
             player2bank.add(card);
             player2CardSet.remove(card);
@@ -437,8 +470,22 @@ public class GameScreen extends JPanel implements ActionListener {
                 moveCard(g, player2CardSet.get(i), player2CardSet.get(i).getLocation(), new Point(10 + i * 100, 600));
             }
             for (int i = 0; i < player2bank.size(); i++) {
-                moveCard(g, player2bank.get(i), player2bank.get(i).getLocation(), new Point(100, 250+i*30));
+                moveCard(g, player2bank.get(i), player2bank.get(i).getLocation(), new Point(270, 350+i*50));
             }
+            if(Cash.value==1){
+                Cash.sum2+=1;
+            }else if(Cash.value==2){
+                Cash.sum2+=2;
+            }else if(Cash.value==3){
+                Cash.sum2+=3;
+            }else if(Cash.value==4){
+                Cash.sum2+=4;
+            }else if(Cash.value==5){
+                Cash.sum2+=5;
+            }else if(Cash.value==10){
+                Cash.sum2+=10;
+            }
+            System.out.println(Cash.getSum2());
         }
     }
 

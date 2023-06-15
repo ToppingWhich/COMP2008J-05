@@ -15,6 +15,7 @@ public final class GameManager {
     private JFrame mainWindow;
     private JPanel mainPanel;
     private JPanel gameScreen;
+    private JPanel gameScreen2;
     private MenuListener listener;
 
     //TODO
@@ -27,7 +28,7 @@ public final class GameManager {
     private static final double TIME_BETWEEN_UPDATES = 1000000000.0 / 60;
     private static final int MAX_UPDATES_BEFORE_RENDER = 5;
 
-    public GameManager(CardGame cardGame, JFrame applicationWindow, MenuListener menuListener, GameListener gameListener, JPanel menuScr, JPanel aboutScr, JPanel gameScr) {
+    public GameManager(CardGame cardGame, JFrame applicationWindow, MenuListener menuListener, GameListener gameListener, JPanel menuScr, JPanel aboutScr, JPanel gameScr, JPanel gameScr2) {
         this.mainWindow = applicationWindow;
         this.listener = menuListener;
         this.gameListener = gameListener;
@@ -38,6 +39,7 @@ public final class GameManager {
         mainPanel.add(aboutScr, "About");
         mainPanel.add(menuScr, "Main Menu");
         mainPanel.add(gameScr, "Game Screen");
+        mainPanel.add(gameScr2, "Game Screen2");
         //this.gameScreen = gameScr;
         showMainMenuScreen();
     }
@@ -57,6 +59,11 @@ public final class GameManager {
     private void showGameScreen() {
         //listener.resetKeyPresses();
         cardLayout.show(mainPanel, "Game Screen");
+        screenEnum = ScreenEnum.GAME_SCREEN;
+    }
+    private void showGameScreen2() {
+        //listener.resetKeyPresses();
+        cardLayout.show(mainPanel, "Game Screen2");
         screenEnum = ScreenEnum.GAME_SCREEN;
     }
 
@@ -88,6 +95,11 @@ public final class GameManager {
                         exitGame();
                     }
                     break;
+                case GAME_SCREEN2:
+                    if (listener.exit) {
+                        exitGame();
+                    }
+                    break;
                 case MAIN_MENU_SCREEN:
                     if (listener.exit) {
                         exitGame();
@@ -98,6 +110,9 @@ public final class GameManager {
                         //cardGame.startNewGame();
                         showGameScreen();
                         listener.newGame = false;
+                    }else if (listener.newGame2){
+                        showGameScreen2();
+                        listener.newGame2 = false;
                     }
                     break;
             }
