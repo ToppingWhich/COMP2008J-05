@@ -128,14 +128,14 @@ public class GameScreen extends JPanel implements ActionListener {
         button[19] = addButton(gameListener,"弃牌",80,30,1300,400,10);
         add(button[19]);
 
-        //玩家2存钱进入银行
+        //玩家2弃牌
         button[20] = addButton(gameListener,"弃牌",80,30,1300,300,10);
         add(button[20]);
 
 
         label = new JLabel();
         label.setSize(700, 50);
-        label.setLocation(900, 500);
+        label.setLocation(300, 400);
         label.setFont(new Font("仿宋", Font.BOLD, 15));
         label.setText("请点击“开始发牌“");
         add(label);

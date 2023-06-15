@@ -25,6 +25,11 @@ public class Cash extends Card{
 
     //当前状态，是否已经被点击
     boolean clicked;
+
+    public int getValue() {
+        return this.value;
+    }
+
     public static int value;
     boolean roteted;
     static int sum1;

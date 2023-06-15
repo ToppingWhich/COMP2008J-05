@@ -1,6 +1,7 @@
 package wwww;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * @Author liwenyan
@@ -71,11 +72,15 @@ public class CardGame extends Thread{
             this.interrupt();
         }else if (GameListener.isPlayer1LayoutCashToBank) {
             GameListener.isPlayer1LayoutCashToBank = false;
+
             //Cash selectedCard = GameScreen.player1PublishedCard.get(0);
             Card selectedCard = GameScreen.player1PublishedCard.get(0);
-            selectedCard.roteted=true;
-            selectedCard.rotate();
-            GameScreen.LayoutCash(g,selectedCard);
+            Cash cash = (Cash)  selectedCard;
+            GameScreen.player1Money+=cash.getValue();
+            GameScreen.updateText("玩家1把现金放入了银行"+"The sum of the cash:"+GameScreen.player1Money);
+            cash.roteted=true;
+            cash.rotate();
+            GameScreen.LayoutCash(g,cash);
             gameScreen.button[15].setVisible(false);
             GameScreen.player1PublishedCard.remove(0);
             this.interrupt();
@@ -135,7 +140,7 @@ public class CardGame extends Thread{
             if(GameScreen.player1PropertySet1Color.size()==0) {
                 Property selectedCard = (Property) GameScreen.player1PublishedCard.get(0);
                 GameScreen.LayoutProperty(g, 1, selectedCard);
-                GameScreen.player1PropertySet1Color.addAll(Property.colorArray);
+                GameScreen.player1PropertySet1Color.addAll(judgeColor(selectedCard));
                 gameScreen.button[2].setVisible(false);
                 gameScreen.button[3].setVisible(false);
                 gameScreen.button[4].setVisible(false);
@@ -143,6 +148,7 @@ public class CardGame extends Thread{
                 this.interrupt();
             }else{
                 System.out.println("yansebutong");
+                GameScreen.updateText("颜色不同，放不进去");
                 Property selectedCard = (Property) GameScreen.player1PublishedCard.get(0);
                 for (ColorEnum colorEnum1 : selectedCard.colorArray) {
                     for (ColorEnum colorEnum2 : GameScreen.player1PropertySet1Color) {
@@ -161,14 +167,65 @@ public class CardGame extends Thread{
             }
         } else if (GameListener.isPlayer1LayoutPropertyTo2) {
             GameListener.isPlayer1LayoutPropertyTo2 = false;
-            Card selectedCard = GameScreen.player1PublishedCard.get(0);
-            GameScreen.LayoutProperty(g,2,selectedCard);
-            gameScreen.button[2].setVisible(false);
-            gameScreen.button[3].setVisible(false);
-            gameScreen.button[4].setVisible(false);
-            GameScreen.player1PublishedCard.remove(0);
+            System.out.println("shuliang:"+GameScreen.player1PropertySet2Color.size());
+            if(GameScreen.player1PropertySet2Color.size()==0) {
+                Property selectedCard = (Property) GameScreen.player1PublishedCard.get(0);
+                GameScreen.LayoutProperty(g, 2, selectedCard);
+                GameScreen.player1PropertySet2Color.addAll(judgeColor(selectedCard));
+                gameScreen.button[2].setVisible(false);
+                gameScreen.button[3].setVisible(false);
+                gameScreen.button[4].setVisible(false);
+                GameScreen.player1PublishedCard.remove(0);
+                this.interrupt();
+            }else{
+                System.out.println("yansebutong");
+                GameScreen.updateText("颜色不同，放不进去");
+                Property selectedCard = (Property) GameScreen.player1PublishedCard.get(0);
+                for (ColorEnum colorEnum1 : selectedCard.colorArray) {
+                    for (ColorEnum colorEnum2 : GameScreen.player1PropertySet2Color) {
+                        if(colorEnum1 == colorEnum2){
+                            GameScreen.LayoutProperty(g, 2, selectedCard);
+                            this.interrupt();
+                        }else {
+                            GameScreen.updateText("no");
+                            this.interrupt();
+                        }
+
+                    }
+                }
+            }
             this.interrupt();
         }else if (GameListener.isPlayer1LayoutPropertyTo3) {
+            GameListener.isPlayer1LayoutPropertyTo3 = false;
+            System.out.println("shuliang:"+GameScreen.player1PropertySet3Color.size());
+            if(GameScreen.player1PropertySet3Color.size()==0) {
+                Property selectedCard = (Property) GameScreen.player1PublishedCard.get(0);
+                GameScreen.LayoutProperty(g, 3, selectedCard);
+                GameScreen.player1PropertySet3Color.addAll(judgeColor(selectedCard));
+                gameScreen.button[2].setVisible(false);
+                gameScreen.button[3].setVisible(false);
+                gameScreen.button[4].setVisible(false);
+                GameScreen.player1PublishedCard.remove(0);
+                this.interrupt();
+            }else{
+                System.out.println("yansebutong");
+                GameScreen.updateText("颜色不同，放不进去");
+                Property selectedCard = (Property) GameScreen.player1PublishedCard.get(0);
+                for (ColorEnum colorEnum1 : selectedCard.colorArray) {
+                    for (ColorEnum colorEnum2 : GameScreen.player1PropertySet3Color) {
+                        if(colorEnum1 == colorEnum2){
+                            GameScreen.LayoutProperty(g, 3, selectedCard);
+                            GameScreen.player1PublishedCard.remove(0);
+                            this.interrupt();
+                        }else {
+                            GameScreen.updateText("no");
+                            GameScreen.player1PublishedCard.remove(0);
+                            this.interrupt();
+                        }
+
+                    }
+                }
+            }
             GameListener.isPlayer1LayoutPropertyTo3 = false;
             Card selectedCard = GameScreen.player1PublishedCard.get(0);
             GameScreen.LayoutProperty(g,3,selectedCard);
@@ -207,30 +264,97 @@ public class CardGame extends Thread{
             this.interrupt();
         }else if (GameListener.isPlayer2LayoutPropertyTo1) {
             GameListener.isPlayer2LayoutPropertyTo1 = false;
-            Card selectedCard = GameScreen.player2PublishedCard.get(0);
-            GameScreen.LayoutProperty(g,1,selectedCard);
-            gameScreen.button[11].setVisible(false);
-            gameScreen.button[12].setVisible(false);
-            gameScreen.button[13].setVisible(false);
-            GameScreen.player2PublishedCard.remove(0);
+            System.out.println("shuliang:"+GameScreen.player2PropertySet1Color.size());
+            if(GameScreen.player2PropertySet1Color.size()==0) {
+                Property selectedCard = (Property) GameScreen.player2PublishedCard.get(0);
+                GameScreen.LayoutProperty(g, 1, selectedCard);
+                GameScreen.player2PropertySet1Color.addAll(judgeColor(selectedCard));
+                gameScreen.button[2].setVisible(false);
+                gameScreen.button[3].setVisible(false);
+                gameScreen.button[4].setVisible(false);
+                GameScreen.player2PublishedCard.remove(0);
+                this.interrupt();
+            }else{
+                System.out.println("yansebutong");
+                GameScreen.updateText("颜色不同，放不进去");
+                Property selectedCard = (Property) GameScreen.player2PublishedCard.get(0);
+                for (ColorEnum colorEnum1 : selectedCard.colorArray) {
+                    for (ColorEnum colorEnum2 : GameScreen.player2PropertySet1Color) {
+                        if(colorEnum1 == colorEnum2){
+                            GameScreen.LayoutProperty(g, 1, selectedCard);
+                            GameScreen.player2PublishedCard.remove(0);
+                            this.interrupt();
+                        }else {
+                            GameScreen.updateText("no");
+                            GameScreen.player2PublishedCard.remove(0);
+                            this.interrupt();
+                        }
+
+                    }
+                }
+            }
             this.interrupt();
         } else if (GameListener.isPlayer2LayoutPropertyTo2) {
             GameListener.isPlayer2LayoutPropertyTo2 = false;
-            Card selectedCard = GameScreen.player2PublishedCard.get(0);
-            GameScreen.LayoutProperty(g,2,selectedCard);
-            gameScreen.button[11].setVisible(false);
-            gameScreen.button[12].setVisible(false);
-            gameScreen.button[13].setVisible(false);
-            GameScreen.player2PublishedCard.remove(0);
+            System.out.println("shuliang:"+GameScreen.player2PropertySet2Color.size());
+            if(GameScreen.player2PropertySet2Color.size()==0) {
+                Property selectedCard = (Property) GameScreen.player2PublishedCard.get(0);
+                GameScreen.LayoutProperty(g, 2, selectedCard);
+                GameScreen.player2PropertySet2Color.addAll(judgeColor(selectedCard));
+                gameScreen.button[2].setVisible(false);
+                gameScreen.button[3].setVisible(false);
+                gameScreen.button[4].setVisible(false);
+                GameScreen.player2PublishedCard.remove(0);
+                this.interrupt();
+            }else{
+                System.out.println("yansebutong");
+                GameScreen.updateText("颜色不同，放不进去");
+                Property selectedCard = (Property) GameScreen.player2PublishedCard.get(0);
+                for (ColorEnum colorEnum1 : selectedCard.colorArray) {
+                    for (ColorEnum colorEnum2 : GameScreen.player2PropertySet2Color) {
+                        if(colorEnum1 == colorEnum2){
+                            GameScreen.LayoutProperty(g, 2, selectedCard);
+                            GameScreen.player2PublishedCard.remove(0);
+                            this.interrupt();
+                        }else {
+                            GameScreen.updateText("no");
+                            GameScreen.player2PublishedCard.remove(0);
+                            this.interrupt();
+                        }
+                    }
+                }
+            }
             this.interrupt();
         }else if (GameListener.isPlayer2LayoutPropertyTo3) {
             GameListener.isPlayer2LayoutPropertyTo3 = false;
-            Card selectedCard = GameScreen.player2PublishedCard.get(0);
-            GameScreen.LayoutProperty(g,3,selectedCard);
-            gameScreen.button[11].setVisible(false);
-            gameScreen.button[12].setVisible(false);
-            gameScreen.button[13].setVisible(false);
-            GameScreen.player2PublishedCard.remove(0);
+            System.out.println("shuliang:"+GameScreen.player2PropertySet3Color.size());
+            if(GameScreen.player2PropertySet3Color.size()==0) {
+                Property selectedCard = (Property) GameScreen.player2PublishedCard.get(0);
+                GameScreen.LayoutProperty(g, 3, selectedCard);
+                GameScreen.player2PropertySet3Color.addAll(judgeColor(selectedCard));
+                gameScreen.button[2].setVisible(false);
+                gameScreen.button[3].setVisible(false);
+                gameScreen.button[4].setVisible(false);
+                GameScreen.player2PublishedCard.remove(0);
+                this.interrupt();
+            }else{
+                System.out.println("yansebutong");
+                GameScreen.updateText("颜色不同，放不进去");
+                Property selectedCard = (Property) GameScreen.player2PublishedCard.get(0);
+                for (ColorEnum colorEnum1 : selectedCard.colorArray) {
+                    for (ColorEnum colorEnum2 : GameScreen.player2PropertySet3Color) {
+                        if(colorEnum1 == colorEnum2){
+                            GameScreen.LayoutProperty(g, 3, selectedCard);
+                            GameScreen.player2PublishedCard.remove(0);
+                            this.interrupt();
+                        }else {
+                            GameScreen.updateText("no");
+                            GameScreen.player2PublishedCard.remove(0);
+                            this.interrupt();
+                        }
+                    }
+                }
+            }
             this.interrupt();
         }else if (GameListener.isPlayer1AbandonCard) {
             GameListener.isPlayer1AbandonCard = false;
@@ -353,5 +477,61 @@ public class CardGame extends Thread{
             GameScreen.button[10].setVisible(false);
             this.interrupt();
         }
+    }
+
+    public static ArrayList<ColorEnum> judgeColor(Card card){
+        ArrayList<ColorEnum> colorList= new ArrayList<ColorEnum>();
+        if(card instanceof BlueProperty){
+            colorList.add(ColorEnum.BLUE);
+        }else if(card instanceof GreenProperty){
+            colorList.add(ColorEnum.GREEN);
+        }else if(card instanceof LightBlueProperty){
+            colorList.add(ColorEnum.LIGHTBLUE);
+        }else if(card instanceof RedProperty){
+            colorList.add(ColorEnum.RED);
+        }else if(card instanceof UtilityProperty){
+            colorList.add(ColorEnum.UTILITY);
+        }else if(card instanceof YellowProperty){
+            colorList.add(ColorEnum.YELLOW);
+        }else if(card instanceof OrangeProperty){
+            colorList.add(ColorEnum.ORANGE);
+        }else if(card instanceof BrownProperty){
+            colorList.add(ColorEnum.BROWN);
+        }else if(card instanceof PurpleProperty){
+            colorList.add(ColorEnum.PURPLE);
+        }else if(card instanceof PurOraProperty){
+            colorList.add(ColorEnum.PURPLE);
+            colorList.add(ColorEnum.ORANGE);
+        }else if(card instanceof BroLigProperty){
+            colorList.add(ColorEnum.LIGHTBLUE);
+            colorList.add(ColorEnum.BROWN);
+        }else if(card instanceof LigRaiProperty){
+            colorList.add(ColorEnum.LIGHTBLUE);
+            colorList.add(ColorEnum.RAILROAD);
+        }else if(card instanceof GreBluProperty){
+            colorList.add(ColorEnum.GREEN);
+            colorList.add(ColorEnum.BLUE);
+        }else if(card instanceof RaiGreProperty){
+            colorList.add(ColorEnum.GREEN);
+            colorList.add(ColorEnum.RAILROAD);
+        }else if(card instanceof RedYelProperty){
+            colorList.add(ColorEnum.RED);
+            colorList.add(ColorEnum.YELLOW);
+        }else if(card instanceof RaiUtiProperty){
+            colorList.add(ColorEnum.UTILITY);
+            colorList.add(ColorEnum.RAILROAD);
+        }else if(card instanceof MultifyWildProperty){
+            colorList.add(ColorEnum.LIGHTBLUE);
+            colorList.add(ColorEnum.RAILROAD);
+            colorList.add(ColorEnum.BLUE);
+            colorList.add(ColorEnum.BROWN);
+            colorList.add(ColorEnum.RED);
+            colorList.add(ColorEnum.YELLOW);
+            colorList.add(ColorEnum.ORANGE);
+            colorList.add(ColorEnum.UTILITY);
+            colorList.add(ColorEnum.PURPLE);
+            colorList.add(ColorEnum.GREEN);
+        }
+        return colorList;
     }
 }
