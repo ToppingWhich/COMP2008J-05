@@ -14,16 +14,16 @@ import java.awt.event.MouseEvent;
 public class Rent extends Card{
     GameScreen gameScreen;
     public  static String cardType;
-    //牌的名字
+    //The name of the card
     String name;
 
     String color;
-    //牌显示正面还是反面
+    //Does the card say heads or tails
     boolean up;
-    //是否可点击
+    //If it can be clicked
     boolean canClick;
 
-    //当前状态，是否已经被点击
+    //Current status, whether it has been clicked
     boolean clicked;
 
     public Rent(GameScreen gameScreen, String name, boolean up,String color) {
@@ -47,19 +47,19 @@ public class Rent extends Card{
 
     @Override
     public void turnFront() {
-        System.out.println("正面");
-        if(this.color == "紫色-橙色租金"){
-            System.out.println("租金租金");
+        System.out.println("Front");
+        if(this.color == "Purple-Orange Rent"){
+            System.out.println("RentRent");
             this.setIcon(new ImageIcon("src/images/purpleorangerent.png"));
-        }else if(this.color == "铁路-设施租金"){
+        }else if(this.color == "Railroad-Utility Rent"){
             this.setIcon(new ImageIcon("src/images/railroadutilityrent.png"));
-        }else if(this.color == "绿色-蓝色租金"){
+        }else if(this.color == "Green-Blue Rent"){
             this.setIcon(new ImageIcon("src/images/bluegreenrent.png"));
-        }else if(this.color == "棕色-浅蓝色租金"){
+        }else if(this.color == "Brown-LightBlue Rent"){
             this.setIcon(new ImageIcon("src/images/brownlightbluerent.png"));
-        }else if(this.color == "红色-黄色租金"){
+        }else if(this.color == "Red-Yellow Rent"){
             this.setIcon(new ImageIcon("src/images/redyellowrent.png"));
-        }else if(this.color == "彩色租金"){
+        }else if(this.color == "Multi-color Rent"){
             this.setIcon(new ImageIcon("src/images/allcolorrent.png"));
         }
     }

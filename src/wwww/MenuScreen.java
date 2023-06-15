@@ -64,15 +64,15 @@ public class MenuScreen extends JPanel implements ActionListener {
     void showTextMid(String text,Graphics graphics,int size){
         Font font = new Font("Arial", Font.BOLD, size);
         graphics.setFont(font);
-        // 获取面板的大小
+        // Gets the size of the panel
         Dimension panelSize = getSize();
-        // 获取文字的宽度和高度
+        // Gets the width and height of text
         int textWidth = graphics.getFontMetrics().stringWidth(text);
         int textHeight = graphics.getFontMetrics().getHeight();
-        // 计算文字的位置
+        // Calculate the position of the text
         int x = (panelSize.width - textWidth) / 2;
         int y = (panelSize.height + textHeight) / 2;
-        // 在界面中心绘制文字
+        // Draw text in the center of the interface
         graphics.drawString(text, x, 150);
     }
 

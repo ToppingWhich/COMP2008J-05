@@ -16,12 +16,12 @@ import java.util.Collections;
 public class GameScreen extends JPanel implements ActionListener {
 
     public static ArrayList<ColorEnum> player1PropertySet1Color = new ArrayList<ColorEnum>();
-    public static ArrayList<ColorEnum> player1PropertySet2Color= new ArrayList<ColorEnum>();;
-    public static ArrayList<ColorEnum> player1PropertySet3Color= new ArrayList<ColorEnum>();;
+    public static ArrayList<ColorEnum> player1PropertySet2Color;
+    public static ArrayList<ColorEnum> player1PropertySet3Color;
 
-    public static ArrayList<ColorEnum> player2PropertySet1Color= new ArrayList<ColorEnum>();;
-    public static ArrayList<ColorEnum> player2PropertySet2Color= new ArrayList<ColorEnum>();;
-    public static ArrayList<ColorEnum> player2PropertySet3Color= new ArrayList<ColorEnum>();;
+    public static ArrayList<ColorEnum> player2PropertySet1Color;
+    public static ArrayList<ColorEnum> player2PropertySet2Color;
+    public static ArrayList<ColorEnum> player2PropertySet3Color;
 
     public static int player1PublishedCardNumPerTurn = 0;
     public static int player2PublishedCardNumPerTurn = 0;
@@ -58,88 +58,86 @@ public class GameScreen extends JPanel implements ActionListener {
         MenuListener menuListener = new MenuListener();
         GameListener gameListener = new GameListener(this);
         button[0] = addButton(menuListener,"EXIT",80,30,10,10,10);
-        button[1] = addButton(gameListener,"开始发牌",80,30,900,400,10);
+        button[1] = addButton(gameListener,"Open a deal",80,30,900,400,10);
         button[0].setVisible(true);
         button[1].setVisible(true);
 
         add(button[0]);
         add(button[1]);
 
-        button[2] = addButton(gameListener,"放置1",80,30,1100,750,10);
-        button[3] = addButton(gameListener,"放置2",80,30,1200,750,10);
-        button[4] = addButton(gameListener,"放置3",80,30,1300,750,10);
+        button[2] = addButton(gameListener,"Place 1",80,30,1100,750,10);
+        button[3] = addButton(gameListener,"Place 2",80,30,1200,750,10);
+        button[4] = addButton(gameListener,"Place 3",80,30,1300,750,10);
 
         add(button[2]);
         add(button[3]);
         add(button[4]);
 
 
-        button[11] = addButton(gameListener,"放置1",80,30,100,10,10);
-        button[12] = addButton(gameListener,"放置2",80,30,200,10,10);
-        button[13] = addButton(gameListener,"放置3",80,30,300,10,10);
+        button[11] = addButton(gameListener,"Place 1",80,30,100,10,10);
+        button[12] = addButton(gameListener,"Place 2",80,30,200,10,10);
+        button[13] = addButton(gameListener,"Place 3",80,30,300,10,10);
 
         add(button[11]);
         add(button[12]);
         add(button[13]);
 
-        //玩家1开始回合
-        button[5] = addButton(gameListener,"开始回合",80,30,900,400,10);
+        //Player 1 starts the turn
+        button[5] = addButton(gameListener,"Opening round",80,30,900,400,10);
         add(button[5]);
-        //玩家2开始回合
-        button[8] = addButton(gameListener,"开始回合",80,30,900,400,10);
+        //Player 2 starts the turn
+        button[8] = addButton(gameListener,"Opening round",80,30,900,400,10);
         add(button[8]);
 
-        //玩家1出牌
-        button[6] = addButton(gameListener,"出牌",80,30,900,400,10);
+        //Player 1 plays cards
+        button[6] = addButton(gameListener,"Playing Cards",80,30,900,400,10);
         add(button[6]);
 
-        //玩家1结束回合
-        button[7] = addButton(gameListener,"结束回合",80,30,1100,400,10);
+        //Player 1 ends the turn
+        button[7] = addButton(gameListener,"End round",80,30,1100,400,10);
         add(button[7]);
 
-        //玩家2出牌
-        button[9] = addButton(gameListener,"出牌",80,30,900,300,10);
+        //Player 2 plays cards
+        button[9] = addButton(gameListener,"Playing Cards",80,30,900,300,10);
         add(button[9]);
 
-        //玩家2结束回合
-        button[10] = addButton(gameListener,"结束回合",80,30,1100,300,10);
+        //Player 2 ends the turn
+        button[10] = addButton(gameListener,"End round",80,30,1100,300,10);
         add(button[10]);
 
-        //玩家一强制交易
-        button[14] = addButton(gameListener,"交换",80,30,1300,400,10);
+        //Player 1 force deal
+        button[14] = addButton(gameListener,"Exchange",80,30,1300,400,10);
         add(button[14]);
 
-        //玩家1存钱进入银行
-        button[15] = addButton(gameListener,"银行",80,30,1300,400,10);
+        //Player 1 deposits money into the bank
+        button[15] = addButton(gameListener,"Bank",80,30,1300,400,10);
         add(button[15]);
 
-        //玩家2存钱进入银行
-        button[16] = addButton(gameListener,"银行",80,30,1300,300,10);
+        //Player 2 deposits money into the bank
+        button[16] = addButton(gameListener,"Bank",80,30,1300,300,10);
         add(button[16]);
 
 
-        button[17] = addButton(gameListener,"拿来主义",80,30,1300,400,10);
+        button[17] = addButton(gameListener,"Deal Breaker",80,30,1300,400,10);
         add(button[17]);
 
-        button[18] = addButton(gameListener,"拿来主义",80,30,1300,300,10);
+        button[18] = addButton(gameListener,"Deal Breaker",80,30,1300,300,10);
         add(button[18]);
 
-        //玩家一丢弃牌
-        button[19] = addButton(gameListener,"弃牌",80,30,1300,400,10);
+        //Player 1 folds card
+        button[19] = addButton(gameListener,"Fold",80,30,1300,400,10);
         add(button[19]);
 
-        //玩家2存钱进入银行
-        button[20] = addButton(gameListener,"弃牌",80,30,1300,300,10);
+        //Player 2 folds card
+        button[20] = addButton(gameListener,"Fold",80,30,1300,300,10);
         add(button[20]);
 
 
         label = new JLabel();
         label.setSize(700, 50);
-        label.setLocation(300, 420);
-        label.setFont(new Font("仿宋", Font.BOLD, 22));
-        label.setText("请点击“开始发牌“");
-
-        label.setForeground(new Color(0x005708));
+        label.setLocation(900, 500);
+        label.setFont(new Font("仿宋", Font.BOLD, 15));
+        label.setText("Please click \"Start Dealing\"");
         add(label);
 
         player1PropertySet.add(player1PropertySet1);
@@ -158,13 +156,13 @@ public class GameScreen extends JPanel implements ActionListener {
 
 
     protected void paintComponent(Graphics g) {
-        //创建背景
+        //create background
         try {
             g.drawImage(ImageIO.read(new File("src/images/back.png")), 0, 0, getWidth(), getHeight(), this);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        //准备牌盒子
+        //Prepare the card box
         createCardBox();
         Collections.shuffle(cardBox);
         for (int i = 0; i < cardBox.size(); i++) {
@@ -172,15 +170,11 @@ public class GameScreen extends JPanel implements ActionListener {
             //drawCard(g,cardBox.get(i));
         }
 
-        //准备头像
+        //Prepare profile picture
         Head player1 = createHead(this, "Player1", 10, 550);
-        Head player2 = createHead(this, "Player2", 1400, 250);
+        Head player2 = createHead(this, "Player2", 1400, 300);
         add(player1);
         add(player2);
-        //发牌
-
-
-        //开始回合按钮
 
     }
 
@@ -188,72 +182,72 @@ public class GameScreen extends JPanel implements ActionListener {
         int x = (getWidth()-140)/2;
         int y = (getHeight()-240)/2;
         for (int i = 0; i < 4; i++) {
-            createCard(this,"强制交易",false,x,y,cardBox);
+            createCard(this,"Force deal",false,x,y,cardBox);
         }
-        for (int i = 0; i < 11; i++) {
-            createCard(this,"通行证",false,x,y,cardBox);
-        }
-        for (int i = 0; i < 2; i++) {
-            createCard(this,"彩色地产",false,x,y,cardBox);
-        }
-        for (int i = 0; i < 3; i++) {
-            createCard(this,"绿色地产",false,x,y,cardBox);
+        for (int i = 0; i < 10; i++) {
+            createCard(this,"Pass",false,x,y,cardBox);
         }
         for (int i = 0; i < 2; i++) {
-            createCard(this,"蓝色地产",false,x,y,cardBox);
+            createCard(this,"Multi-color Property",false,x,y,cardBox);
         }
         for (int i = 0; i < 3; i++) {
-            createCard(this,"浅蓝色地产",false,x,y,cardBox);
+            createCard(this,"Green Property",false,x,y,cardBox);
+        }
+        for (int i = 0; i < 2; i++) {
+            createCard(this,"Blue Property",false,x,y,cardBox);
         }
         for (int i = 0; i < 3; i++) {
-            createCard(this,"红色地产",false,x,y,cardBox);
+            createCard(this,"Light Blue Property",false,x,y,cardBox);
+        }
+        for (int i = 0; i < 3; i++) {
+            createCard(this,"Red Property",false,x,y,cardBox);
         }
         for (int i = 0; i < 4; i++) {
-            createCard(this,"铁路地产",false,x,y,cardBox);
+            createCard(this,"Railroad Property",false,x,y,cardBox);
         }
         for (int i = 0; i < 3; i++) {
-            createCard(this,"黄色地产",false,x,y,cardBox);
+            createCard(this,"Yellow Property",false,x,y,cardBox);
         }
         for (int i = 0; i < 3; i++) {
-            createCard(this,"橙色地产",false,x,y,cardBox);
+            createCard(this,"Orange Property",false,x,y,cardBox);
         }
         for (int i = 0; i < 2; i++) {
-            createCard(this,"棕色地产",false,x,y,cardBox);
+            createCard(this,"Brown Property",false,x,y,cardBox);
         }
         for (int i = 0; i < 3; i++) {
-            createCard(this,"紫色地产",false,x,y,cardBox);
+            createCard(this,"Purple Property",false,x,y,cardBox);
         }
         for (int i = 0; i < 2; i++) {
-            createCard(this,"设施地产",false,x,y,cardBox);
+            createCard(this,"Utility Property",false,x,y,cardBox);
         }
         for (int i = 0; i < 2; i++) {
-            createCard(this,"紫色-橙色地产",false,x,y,cardBox);
+            createCard(this,"Purple-Orange Property",false,x,y,cardBox);
         }
         for (int i = 0; i < 2; i++) {
-            createCard(this,"红色-黄色地产",false,x,y,cardBox);
+            createCard(this,"Red-Yellow Property",false,x,y,cardBox);
         }
-        createCard(this,"棕色-浅蓝色地产",false,x,y,cardBox);
-        createCard(this,"浅蓝色-铁路地产",false,x,y,cardBox);
-        createCard(this,"绿色-蓝色地产",false,x,y,cardBox);
-        createCard(this,"铁路-绿色地产",false,x,y,cardBox);
-        createCard(this,"铁路-设施地产",false,x,y,cardBox);
+        createCard(this,"LightBlue-Brown Property",false,x,y,cardBox);
+        createCard(this,"LightBlue-Railroad Property",false,x,y,cardBox);
+        createCard(this,"Green-Blue Property",false,x,y,cardBox);
+        createCard(this,"Railroad-Green Property",false,x,y,cardBox);
+        createCard(this,"Railroad-Utility Property",false,x,y,cardBox);
         for (int i = 0; i < 2; i++) {
-            createRent(this,"紫色-橙色租金","紫色-橙色租金",false,x,y,cardBox);
-        }
-        for (int i = 0; i < 2; i++) {
-            createRent(this,"铁路-设施租金","铁路-设施租金",false,x,y,cardBox);
+            createRent(this,"Purple-Orange Rent","Purple-Orange Rent",false,x,y,cardBox);
         }
         for (int i = 0; i < 2; i++) {
-            createRent(this,"绿色-蓝色租金","绿色-蓝色租金",false,x,y,cardBox);
+            createRent(this,"Railroad-Utility Rent","Railroad-Utility Rent",false,x,y,cardBox);
         }
         for (int i = 0; i < 2; i++) {
-            createRent(this,"棕色-浅蓝色租金","棕色-浅蓝色租金",false,x,y,cardBox);
+            createRent(this,"Green-Blue Rent","Green-Blue Rent",false,x,y,cardBox);
         }
         for (int i = 0; i < 2; i++) {
-            createRent(this,"红色-黄色租金","红色-黄色租金",false,x,y,cardBox);
+            createRent(this,"Brown-LightBlue Rent","Brown-LightBlue Rent",false,x,y,cardBox);
+        }
+        for (int i = 0; i < 2; i++) {
+            createRent(this,"Red-Yellow Rent","Red-Yellow Rent",false,x,y,cardBox);
         }
         for (int i = 0; i < 3; i++) {
-            createRent(this,"彩色租金","彩色租金",false,x,y,cardBox);
+            createRent(this,"Multi-color Rent","Multi-color Rent",false,x,y,cardBox);
         }
         for (int i = 0; i < 6; i++) {
             createCash(this,1,"1M",false,x,y,cardBox);
@@ -271,8 +265,8 @@ public class GameScreen extends JPanel implements ActionListener {
             createCash(this,5,"5M",false,x,y,cardBox);
         }
         createCash(this,10,"10M",false,x,y,cardBox);
-        for (int i = 0; i < 20; i++) {
-            createCard(this,"物业接管",false,x,y,cardBox);
+        for (int i = 0; i < 2; i++) {
+            createCard(this,"Deal Breaker",false,x,y,cardBox);
         }
 
 
@@ -280,47 +274,47 @@ public class GameScreen extends JPanel implements ActionListener {
 
     public void createCard(GameScreen gameScreen,String name, boolean up, int x, int y, ArrayList<Card> cardSet){
         Card card = null;
-        if(name == "彩色地产") {
+        if(name == "Multi-color Property") {
             card = new MultifyWildProperty(gameScreen, name, false);
-        }else if (name =="蓝色地产"){
+        }else if (name =="Blue Property"){
             card = new BlueProperty(gameScreen,name,false);
-        }else if (name=="强制交易"){
+        }else if (name=="Force deal"){
             card = new ForceDeal(gameScreen,name,false);
-        }else if (name=="通行证"){
+        }else if (name=="Pass"){
             card = new PassGo(gameScreen,name,false);
-        }else if (name=="红色地产"){
+        }else if (name=="Red Property"){
             card = new RedProperty(gameScreen,name,false);
-        }else if (name=="绿色地产"){
+        }else if (name=="Green Property"){
             card = new GreenProperty(gameScreen,name,false);
-        }else if (name=="紫色地产"){
+        }else if (name=="Purple Property"){
             card = new PurpleProperty(gameScreen,name,false);
-        }else if (name=="棕色地产"){
+        }else if (name=="Brown Property"){
             card = new BrownProperty(gameScreen,name,false);
-        }else if (name=="黄色地产"){
+        }else if (name=="Yellow Property"){
             card = new YellowProperty(gameScreen,name,false);
-        }else if (name=="浅蓝色地产"){
+        }else if (name=="Light Blue Property"){
             card = new LightBlueProperty(gameScreen,name,false);
-        }else if (name=="铁路地产"){
+        }else if (name=="Railroad Property"){
             card = new RailroadProperty(gameScreen,name,false);
-        }else if (name=="设施地产"){
+        }else if (name=="Utility Property"){
             card = new UtilityProperty(gameScreen,name,false);
-        }else if (name=="橙色地产"){
+        }else if (name=="Orange Property"){
             card = new OrangeProperty(gameScreen,name,false);
-        }else if (name=="紫色-橙色地产"){
+        }else if (name=="Purple-Orange Property"){
             card = new PurOraProperty(gameScreen,name,false);
-        }else if (name=="棕色-浅蓝色地产"){
+        }else if (name=="LightBlue-Brown Property"){
             card = new BroLigProperty(gameScreen,name,false);
-        }else if (name=="浅蓝色-铁路地产"){
+        }else if (name=="LightBlue-Railroad Property"){
             card = new LigRaiProperty(gameScreen,name,false);
-        }else if (name=="绿色-蓝色地产"){
+        }else if (name=="Green-Blue Property"){
             card = new GreBluProperty(gameScreen,name,false);
-        }else if (name=="铁路-绿色地产"){
+        }else if (name=="Railroad-Green Property"){
             card = new RaiGreProperty(gameScreen,name,false);
-        }else if (name=="红色-黄色地产"){
+        }else if (name=="Red-Yellow Property"){
             card = new RedYelProperty(gameScreen,name,false);
-        }else if (name=="铁路-设施地产"){
+        }else if (name=="Railroad-Utility Property"){
             card = new RaiUtiProperty(gameScreen,name,false);
-        }else if (name=="物业接管"){
+        }else if (name=="Deal Breaker"){
             card = new DealBreaker(gameScreen,name,false);
         }
         card.setLocation(x, y);

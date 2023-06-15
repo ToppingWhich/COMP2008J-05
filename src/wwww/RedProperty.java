@@ -24,17 +24,17 @@ public class RedProperty extends Property {
         this.gameScreen = gameScreen;
         this.name = name;
         this.up = up;
-        //判断当前的牌是显示正面还是背面
+        //Determine whether the current card shows front or back
         if (this.up){
             this.turnFront();
         }else {
             this.turnRear();
         }
-        //设置牌的宽高大小
+        //Set the width, height and size of the card
         this.setSize(140, 240);
-        //把牌显示出来
+        //Display the card
         this.setVisible(true);
-        //给每一张牌添加鼠标监听
+        //Add mouse monitor to each card
         this.addMouseListener(this);
     }
     public RedProperty(GameScreen gameScreen, String name, boolean canClick, boolean clicked) {
@@ -46,13 +46,13 @@ public class RedProperty extends Property {
     @Override
     void used(GameScreen gameScreen) {
         if(GameScreen.playerturn == 1) {
-            //显示三个”放置“按钮
+            //Three Place buttons are displayed
             gameScreen.button[2].setVisible(true);
             gameScreen.button[3].setVisible(true);
             gameScreen.button[4].setVisible(true);
             this.clicked = false;
         }else if(GameScreen.playerturn == 2) {
-            //显示三个”放置“按钮
+            //Three Place buttons are displayed
             gameScreen.button[11].setVisible(true);
             gameScreen.button[12].setVisible(true);
             gameScreen.button[13].setVisible(true);

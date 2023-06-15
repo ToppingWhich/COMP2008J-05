@@ -25,7 +25,7 @@ public class LayoutProperty extends CardGame{
     public void run() {
         System.out.println(GameListener.isPlayer1LayoutPropertyTo1);
         if (GameListener.isPlayer1LayoutPropertyTo1) {
-            System.out.println("放置1");
+            System.out.println("Place 1");
             GameListener.isPlayer1LayoutPropertyTo1 = false;
             Card selectedCard = GameScreen.player1PublishedCard.get(0);
             GameScreen.LayoutProperty(g,1,selectedCard);

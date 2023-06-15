@@ -47,7 +47,7 @@ public class AboutScreen extends JPanel implements ActionListener {
                 "their hand. If they do, they need to discard the excess cards into the discard pile.",g,25,80,500,1500);
         showText("For more information: https://monopolydealrules.com/index.php?page=general#top",g,30,150,730,1500);
     }
-
+    //The method that can display the game rules in the page
     void showText(String text, Graphics graphics, int size, int x, int y, int maxWidth) {
         Font font = new Font("Arial", Font.PLAIN, size);
         graphics.setFont(font);
@@ -75,92 +75,7 @@ public class AboutScreen extends JPanel implements ActionListener {
         }
     }
 
-//    void showTextMid(String text, Graphics graphics, int size) {
-//        Font font = new Font("Arial", Font.BOLD, size);
-//        graphics.setFont(font);
-//
-//        // 获取面板的大小
-//        Dimension panelSize = getSize();
-//        // 获取文字的高度
-//        int textHeight = graphics.getFontMetrics().getHeight();
-//
-//        // 拆分多行文字
-//        String[] lines = text.split("\n");
-//
-//        // 计算文字的位置
-//        int totalTextHeight = lines.length * textHeight;
-//        int startY = (panelSize.height - totalTextHeight) / 2;
-//
-//        // 在界面中心绘制多行文字
-//        for (String line : lines) {
-//            int textWidth = graphics.getFontMetrics().stringWidth(line);
-//            int startX = (panelSize.width - textWidth) / 2;
-//
-//            graphics.drawString(line, startX, startY);
-//
-//            // 更新下一行文字的起始位置
-//            startY += textHeight;
-//        }
-//    }
 
-//    void showTextMid(String text,Graphics graphics,int size){
-//        Font font = new Font("Arial", Font.BOLD, size);
-//        graphics.setFont(font);
-//        // 获取面板的大小
-//        Dimension panelSize = getSize();
-//        // 获取文字的宽度和高度
-//        int textWidth = graphics.getFontMetrics().stringWidth(text);
-//        int textHeight = graphics.getFontMetrics().getHeight();
-//        // 计算文字的位置
-//        int x = (panelSize.width - textWidth) / 2;
-//        int y = (panelSize.height + textHeight) / 2;
-//        // 在界面中心绘制文字
-//        graphics.drawString(text, x, y);
-//    }
-
-
-    //void showTextMid(String text, Graphics graphics, int size, int maxWidth) {
-//    Font font = new Font("Arial", Font.BOLD, size);
-//    graphics.setFont(font);
-//    // 获取面板的大小
-//    Dimension panelSize = getSize();
-//    // 获取文字的高度
-//    int textHeight = graphics.getFontMetrics().getHeight();
-//    // 按照指定的宽度分割文字
-//    List<String> lines = splitText(text, graphics, maxWidth);
-//    // 计算文字的起始位置
-//    int startY = (panelSize.height - (lines.size() * textHeight)) / 2;
-//    // 在界面中心绘制每一行文字
-//    for (int i = 0; i < lines.size(); i++) {
-//        String line = lines.get(i);
-//        int textWidth = graphics.getFontMetrics().stringWidth(line);
-//        int startX = (panelSize.width - textWidth) / 2;
-//        int y = startY + (i * textHeight);
-//        graphics.drawString(line, startX, y);
-//    }
-//}
-//
-//    List<String> splitText(String text, Graphics graphics, int maxWidth) {
-//        List<String> lines = new ArrayList<>();
-//        String[] words = text.split(" ");
-//        StringBuilder lineBuilder = new StringBuilder();
-//        for (String word : words) {
-//            int lineLength = graphics.getFontMetrics().stringWidth(lineBuilder.toString()) + graphics.getFontMetrics().stringWidth(" " + word);
-//            System.out.println(lineLength);
-//            //int lineLength = graphics.getFontMetrics().stringWidth(lineBuilder.toString() + " " + word);
-//            if (lineLength <= maxWidth) {
-//                lineBuilder.append(" ").append(word);
-//            } else {
-//                lines.add(lineBuilder.toString().trim());
-//                lineBuilder.setLength(0);
-//                lineBuilder.append(word);
-//            }
-//        }
-//        if (lineBuilder.length() > 0) {
-//            lines.add(lineBuilder.toString().trim());
-//        }
-//        return lines;
-//    }
     JButton addButton(MenuListener menuListener, String text, int width, int height, int x, int y, int size){
         JButton button1 = new JButton(text);
         button1.setBounds(x, y, width, height);

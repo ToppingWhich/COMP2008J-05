@@ -45,99 +45,90 @@ public class GameListener implements ActionListener {
         if (e.getSource() == GameScreen.button[1] ){
             System.out.println("1");
             isInitCard = true;
-            GameScreen.updateText("请第一位玩家开始回合");
+            GameScreen.updateText("Please ask the first player to start the round");
             CardGame cardGame = new CardGame(gameScreen);
             cardGame.start();
         }else if(e.getSource()==GameScreen.button[5]) {
             isBeginPlayer1Turn = true;
-            GameScreen.updateText("玩家1的回合，\n获得两张新的手牌");
+            GameScreen.updateText("Player 1's turn,Get two new hands");
             CardGame cardGame = new CardGame(gameScreen);
             cardGame.start();
         } else if(e.getSource()==GameScreen.button[17]) {
             isPlayer1DealBreaker= true;
-            GameScreen.updateText("玩家1使用了DealBreaker");
+            GameScreen.updateText("Player 1 used DealBreaker");
             CardGame cardGame = new CardGame(gameScreen);
             cardGame.start();
         } else if (e.getSource()==GameScreen.button[7]) {
             if(GameScreen.player1CardSet.size()<8) {
                 isEndPlayer1Turn = true;
-                GameScreen.updateText("玩家1的回合结束了");
+                GameScreen.updateText("Player 1's turn is over");
                 CardGame cardGame = new CardGame(gameScreen);
                 cardGame.start();
             }else{
-                GameScreen.updateText("你的手牌太多无法结束");
+                GameScreen.updateText("You have too many cards to finish");
                 GameScreen.button[19].setVisible(true);
             }
         }else if (e.getSource()==GameScreen.button[19]) {
             isPlayer1AbandonCard = true;
-            GameScreen.updateText("玩家1弃牌了");
-            CardGame cardGame = new CardGame(gameScreen);
-            cardGame.start();
-        }else if (e.getSource()==GameScreen.button[20]) {
-            isPlayer2AbandonCard = true;
-            GameScreen.updateText("玩家2弃牌了");
+            GameScreen.updateText("Player 1 has abandoned his card");
             CardGame cardGame = new CardGame(gameScreen);
             cardGame.start();
         }else if(e.getSource()==GameScreen.button[8]) {
             isBeginPlayer2Turn = true;
-            GameScreen.updateText("玩家2的回合，获得两张新的手牌");
+            GameScreen.updateText("For Player 2's turn, you get two new hands");
             CardGame cardGame = new CardGame(gameScreen);
             cardGame.start();
         }else if (e.getSource()==GameScreen.button[10]) {
-            if(GameScreen.player2CardSet.size()<8) {
-                isEndPlayer2Turn = true;
-                GameScreen.updateText("玩家2的回合结束了");
-                CardGame cardGame = new CardGame(gameScreen);
-                cardGame.start();
-            }else{
-                GameScreen.updateText("你的手牌太多无法结束");
-                GameScreen.button[20].setVisible(true);
-            }
+            //if(GameScreen.player1CardSet.size()<6) {
+            isEndPlayer2Turn = true;
+            GameScreen.updateText("Player 2's turn is over");
+            CardGame cardGame = new CardGame(gameScreen);
+            cardGame.start();
         } else if (e.getSource() == GameScreen.button[6]) {
             isPlayer1PublishedCard = true;
-            GameScreen.updateText("玩家1出牌了");
+            GameScreen.updateText("Player 1 has played his hand");
             CardGame cardGame = new CardGame(gameScreen);
             cardGame.start();
         }else if (e.getSource() == GameScreen.button[2]) {
             isPlayer1LayoutPropertyTo1 = true;
-            GameScreen.updateText("玩家1放置了地产在1框");
+            GameScreen.updateText("Player 1 placed the property in the 1 box");
             CardGame cardGame = new CardGame(gameScreen);
             cardGame.start();
         }
         else if (e.getSource() == GameScreen.button[3]) {
             isPlayer1LayoutPropertyTo2 = true;
-            GameScreen.updateText("玩家1放置了地产在2框");
+            GameScreen.updateText("Player 1 placed the property in box 2");
             CardGame cardGame = new CardGame(gameScreen);
             cardGame.start();
         }
         else if (e.getSource() == GameScreen.button[4]) {
             isPlayer1LayoutPropertyTo3 = true;
-            GameScreen.updateText("玩家1放置了地产在3框");
+            GameScreen.updateText("Player 1 placed the property in box 3");
             CardGame cardGame = new CardGame(gameScreen);
             cardGame.start();
         }else if (e.getSource() == GameScreen.button[9]) {
             isPlayer2PublishedCard = true;
-            GameScreen.updateText("玩家2出牌了");
+            GameScreen.updateText("Player 2 has played");
             CardGame cardGame = new CardGame(gameScreen);
             cardGame.start();
         }else if (e.getSource() == GameScreen.button[11]) {
             isPlayer2LayoutPropertyTo1 = true;
-            GameScreen.updateText("玩家2放置了地产在1框");
+            GameScreen.updateText("Player 2 placed the property in box 1");
             CardGame cardGame = new CardGame(gameScreen);
             cardGame.start();
         }else if (e.getSource() == GameScreen.button[12]) {
             isPlayer2LayoutPropertyTo2 = true;
-            GameScreen.updateText("玩家2放置了地产在2框");
+            GameScreen.updateText("Player 2 placed the property in box 2");
             CardGame cardGame = new CardGame(gameScreen);
             cardGame.start();
         }else if (e.getSource() == GameScreen.button[13]) {
             isPlayer2LayoutPropertyTo3 = true;
-            GameScreen.updateText("玩家2放置了地产在3框");
+            GameScreen.updateText("Player 2 placed the property in box 3");
             CardGame cardGame = new CardGame(gameScreen);
             cardGame.start();
         }else if (e.getSource() == GameScreen.button[14]) {
             isPlayer1ChangeProperty = true;
-            GameScreen.updateText("玩家1使用了强制交易");
+            GameScreen.updateText("Player 1 used a forced deal");
             CardGame cardGame = new CardGame(gameScreen);
             cardGame.start();
         }else if (e.getSource() == GameScreen.button[15]) {
@@ -145,12 +136,13 @@ public class GameListener implements ActionListener {
             //GameScreen.updateText("玩家1把现金放入了银行"+"The sum of the cash:"+Cash.sum1);
             CardGame cardGame = new CardGame(gameScreen);
             cardGame.start();
-
+            GameScreen.updateText("玩家1把现金放入了银行"+"The sum of the cash:"+Cash.sum1+"+the amount of the last card");
         }else if (e.getSource() == GameScreen.button[16]) {
             isPlayer2LayoutCashToBank = true;
-            GameScreen.updateText("玩家2把现金放入了银行"+"The sum of the cash:"+Cash.sum2+"+the amount of the last card");
+//            GameScreen.updateText("玩家2把现金放入了银行"+"The sum of the cash:"+Cash.sum2+"+the amount of the last card");
             CardGame cardGame = new CardGame(gameScreen);
             cardGame.start();
+            GameScreen.updateText("玩家2把现金放入了银行"+"The sum of the cash:"+Cash.sum2+"+the amount of the last card");
         }
 
     }

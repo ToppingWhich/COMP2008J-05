@@ -25,6 +25,7 @@ public class CardGame extends Thread{
     }
 
     @Override
+    //Run the game
     public void run() {
         if (GameListener.isInitCard) {
             GameScreen.button[1].setVisible(false);

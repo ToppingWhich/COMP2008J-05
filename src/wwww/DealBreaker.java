@@ -15,18 +15,18 @@ import java.awt.event.MouseEvent;
 public class DealBreaker extends Card{
     int value= 0;
     boolean roteted;
-    //游戏主界面
+    //Main game interface
     GameScreen gameScreen;
     public  static String cardType;
-    //牌的名字
+    //The name of the card
     String name;
-    //牌显示正面还是反面
+    //Does the card say heads or tails
     boolean up;
-    //是否可点击
+    //If it can be clicked
     boolean canClick;
     Graphics g;
 
-    //当前状态，是否已经被点击
+    //Current status, whether it has been clicked
     boolean clicked;
 
     public DealBreaker(GameScreen gameScreen, String name, boolean up) {

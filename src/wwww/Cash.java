@@ -16,14 +16,14 @@ public class Cash extends Card{
     GameScreen gameScreen;
     public  static String cardType;
     Graphics g;
-    //牌的名字
+    //The name of the card
     String name;
-    //牌显示正面还是反面
+    //Does the card say heads or tails
     boolean up;
-    //是否可点击
+    //If it can be clicked
     boolean canClick;
 
-    //当前状态，是否已经被点击
+    //Current status, whether it has been clicked
     boolean clicked;
 
     public int getValue() {
@@ -31,6 +31,7 @@ public class Cash extends Card{
     }
 
     public static int value;
+    //int value;
     boolean roteted;
     static int sum1;
     static int sum2;
@@ -52,7 +53,7 @@ public class Cash extends Card{
     @Override
     void used(GameScreen gameScreen) {
         if(GameScreen.playerturn == 1) {
-            //显示”银行”按钮
+            //show "bank" bottom
             gameScreen.button[15].setVisible(true);
             this.clicked = false;
         }else if(GameScreen.playerturn == 2) {
@@ -72,22 +73,6 @@ public class Cash extends Card{
     }
     @Override
     public void turnFront() {
-//        if(this.roteted){
-//            System.out.println("旋转");
-//            if (this.value == 1) {
-//                this.setIcon(new ImageIcon("src/images/1ro.png"));
-//            } else if (this.value == 2) {
-//                this.setIcon(new ImageIcon("src/images/2ro.png"));
-//            } else if (this.value == 3) {
-//                this.setIcon(new ImageIcon("src/images/3ro.png"));
-//            } else if (this.value == 4) {
-//                this.setIcon(new ImageIcon("src/images/4ro.png"));
-//            } else if (this.value == 5) {
-//                this.setIcon(new ImageIcon("src/images/5ro.png"));
-//            } else if (this.value == 10) {
-//                this.setIcon(new ImageIcon("src/images/10ro.png"));
-//            }
-//        }else {
             if (this.value == 1) {
                 this.setIcon(new ImageIcon("src/images/1M-money-card.png"));
             } else if (this.value == 2) {
@@ -121,67 +106,6 @@ public class Cash extends Card{
             this.setIcon(new ImageIcon("src/images/10ro.png"));
         }
     }
-//    public void rotate() {
-//        super.rotate();
-//    }
-//
-//    public void rotate1() {
-//        this.setSize(240,140);
-//        if (this.value == 1) {
-//            this.setIcon(new ImageIcon("src/images/1ro.png"));
-//            sum1+=1;
-//
-//        } else if (this.value == 2) {
-//            this.setIcon(new ImageIcon("src/images/2ro.png"));
-//            sum1+=2;
-//
-//        } else if (this.value == 3) {
-//            this.setIcon(new ImageIcon("src/images/3ro.png"));
-//            sum1+=3;
-//
-//        } else if (this.value == 4) {
-//            this.setIcon(new ImageIcon("src/images/4ro.png"));
-//            sum1+=4;
-//
-//        } else if (this.value == 5) {
-//            this.setIcon(new ImageIcon("src/images/5ro.png"));
-//            sum1+=5;
-//
-//        } else if (this.value == 10) {
-//            this.setIcon(new ImageIcon("src/images/10ro.png"));
-//            sum1+=10;
-//        }
-//    }
-//    public void rotate2() {
-//        this.setSize(240,140);
-//        if (this.value == 1) {
-//            this.setIcon(new ImageIcon("src/images/1ro.png"));
-//
-//            sum2+=1;
-//        } else if (this.value == 2) {
-//            this.setIcon(new ImageIcon("src/images/2ro.png"));
-//
-//            sum2+=2;
-//        } else if (this.value == 3) {
-//            this.setIcon(new ImageIcon("src/images/3ro.png"));
-//
-//            sum2+=3;
-//        } else if (this.value == 4) {
-//            this.setIcon(new ImageIcon("src/images/4ro.png"));
-//
-//            sum2+=4;
-//        } else if (this.value == 5) {
-//            this.setIcon(new ImageIcon("src/images/5ro.png"));
-//
-//            sum2+=5;
-//        } else if (this.value == 10) {
-//            this.setIcon(new ImageIcon("src/images/10ro.png"));
-//            sum2+=10;
-//        }
-//    }
-
-
-
     @Override
     public void turnRear() {
         super.turnRear();
