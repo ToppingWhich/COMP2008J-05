@@ -132,7 +132,7 @@ public class PassGo extends Card{
 
     Graphics g;
     //Operation method
-    void used(GameScreen gameScreen){
+    public void used(GameScreen gameScreen){
         for (int i = 0; i < GameScreen.player1PublishedCard.size(); i++) {
             GameScreen.player1PublishedCard.remove(i);
         }

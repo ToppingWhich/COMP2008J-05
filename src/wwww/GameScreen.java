@@ -53,7 +53,7 @@ public class GameScreen extends JPanel implements ActionListener {
 
 
     public static JButton button[] = new JButton[30];
-    GameScreen() {
+    public GameScreen() {
         setLayout(null);
         MenuListener menuListener = new MenuListener();
         GameListener gameListener = new GameListener(this);
