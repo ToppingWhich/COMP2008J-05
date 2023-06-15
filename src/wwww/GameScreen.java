@@ -467,10 +467,10 @@ public class GameScreen extends JPanel implements ActionListener {
             player2CardSet.remove(card);
             player2Money += card.value;
             for (int i = 0; i < player2CardSet.size(); i++) {
-                moveCard(g, player2CardSet.get(i), player2CardSet.get(i).getLocation(), new Point(10 + i * 100, 600));
+                moveCard(g, player2CardSet.get(i), player2CardSet.get(i).getLocation(), new Point(1300 - i * 100, 10));
             }
             for (int i = 0; i < player2bank.size(); i++) {
-                moveCard(g, player2bank.get(i), player2bank.get(i).getLocation(), new Point(270, 350+i*50));
+                moveCard(g, player2bank.get(i), player2bank.get(i).getLocation(), new Point(10, 350+i*50));
             }
             if(Cash.value==1){
                 Cash.sum2+=1;
